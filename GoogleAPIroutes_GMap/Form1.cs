@@ -36,8 +36,12 @@ namespace GoogleAPIroutes_GMap
             AW_ACTIVATE = 0x00020000,
             AW_SLIDE = 0x00040000,
             AW_BLEND = 0x00080000
+
+
+
+
         }
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -56,7 +60,7 @@ namespace GoogleAPIroutes_GMap
                 DialogResult result;
                 result = MessageBox.Show("Проверьте доступ к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 //повторное подключение
-                if (result == System.Windows.Forms.DialogResult.Retry)
+                if (result == DialogResult.Retry)
                 {
                     Form1_Load(sender, e);
                 }
@@ -81,10 +85,10 @@ namespace GoogleAPIroutes_GMap
                 "http://maps.googleapis.com/maps/api/directions/xml?origin={0},&destination={1}&sensor=false&language=ru&mode={2}",
                 Uri.EscapeDataString(textBox1.Text), Uri.EscapeDataString(textBox2.Text), Uri.EscapeDataString("driving"));
             //Выполняем запрос к универсальному коду ресурса (URI).
-            System.Net.HttpWebRequest request =
-                (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+            HttpWebRequest request =
+                (HttpWebRequest)WebRequest.Create(url);
             //Получаем ответ от интернет-ресурса.
-            System.Net.WebResponse response =
+            WebResponse response =
                 request.GetResponse();
             //Экземпляр класса System.IO.Stream 
             //для чтения данных из интернет-ресурса.
@@ -158,8 +162,8 @@ namespace GoogleAPIroutes_GMap
                 gMapControl1.Position = new GMap.NET.PointLatLng(latStart, lngStart);
                 //Создаем новый список маркеров, с указанием компонента 
                 //в котором они будут использоваться и названием списка.
-                GMap.NET.WindowsForms.GMapOverlay markersOverlay =
-                    new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+                GMapOverlay markersOverlay =
+                    new GMapOverlay(gMapControl1, "marker");
                 //Инициализация нового ЗЕЛЕНОГО маркера, с указанием координат начала пути.
                 GMap.NET.WindowsForms.Markers.GMapMarkerGoogleGreen markerG =
                     new GMap.NET.WindowsForms.Markers.GMapMarkerGoogleGreen(
@@ -167,7 +171,7 @@ namespace GoogleAPIroutes_GMap
                 markerG.ToolTip =
                     new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(markerG);
                 //Указываем, что подсказку маркера, необходимо отображать всегда.
-                markerG.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+                markerG.ToolTipMode = MarkerTooltipMode.OnMouseOver;
                 //Формируем подсказку для маркера.
                 string[] wordsG = textBox1.Text.Split(',');
                 string dataMarkerG = string.Empty;
@@ -184,7 +188,7 @@ namespace GoogleAPIroutes_GMap
                 markerG.ToolTip =
                     new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(markerG);
                //Указываем, что подсказку маркера, необходимо отображать всегда.
-                markerR.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.Always;
+                markerR.ToolTipMode = MarkerTooltipMode.Always;
                 //Формируем подсказку для маркера.
                 string[] wordsR = textBox2.Text.Split(',');
                 string dataMarkerR = string.Empty;
@@ -216,7 +220,7 @@ namespace GoogleAPIroutes_GMap
                 //Очищаем все маршруты.
                 markersOverlay.Routes.Clear();
                 //Создаем маршрут на основе списка контрольных точек.
-                GMap.NET.WindowsForms.GMapRoute r = new GMap.NET.WindowsForms.GMapRoute(list, "Route");
+                GMapRoute r = new GMapRoute(list, "Route");
                 //Указываем, что данный маршрут должен отображаться.
                 r.IsVisible = true;
                 //Устанавливаем цвет маршрута.
@@ -334,15 +338,15 @@ namespace GoogleAPIroutes_GMap
                 GMap.NET.MapProviders.GMapProviders.GoogleMap;
             GMap.NET.GMaps.Instance.Mode =
                 GMap.NET.AccessMode.ServerAndCache;
-           this.WindowState = FormWindowState.Minimized;
+           WindowState = FormWindowState.Minimized;
             //this.WindowState = FormWindowState.Maximized;
-             this.WindowState = FormWindowState.Normal;
+             WindowState = FormWindowState.Normal;
             //Если вы используете интернет через прокси сервер,
             //указываем свои учетные данные.
             GMap.NET.MapProviders.GMapProvider.WebProxy =
-                System.Net.WebRequest.GetSystemWebProxy();
+                WebRequest.GetSystemWebProxy();
             GMap.NET.MapProviders.GMapProvider.WebProxy.Credentials =
-                System.Net.CredentialCache.DefaultCredentials;
+                CredentialCache.DefaultCredentials;
             //инициализируем новую таблицу,
             //для хранения данных о маршруте.
             dtRouter = new DataTable();
@@ -439,7 +443,7 @@ FROM Bankomat");
                     image = value;
                     if (image != null)
                     {
-                        this.Size =
+                        Size =
                             new Size(image.Width,
                                 image.Height);
                     }
@@ -452,11 +456,11 @@ FROM Bankomat");
                 : base(p)
             {
                 Size =
-                    new System.Drawing.Size(
+                    new Size(
                         image.Width,
                         image.Height);
                 Offset =
-                    new System.Drawing.Point(
+                    new Point(
                         -Size.Width / 2,
                         -Size.Height / 2);
                 this.image = image;
@@ -478,15 +482,15 @@ FROM Bankomat");
             {
                 //Создаем новый список маркеров, с указанием компонента 
                 //в котором они будут использоваться и названием списка.
-                GMap.NET.WindowsForms.GMapOverlay markersOverlay1 =
-                    new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+                GMapOverlay markersOverlay1 =
+                    new GMapOverlay(gMapControl1, "marker");
                 //Инициализация нового ЗЕЛЕНОГО маркера, с указанием его координат.
                 GMap.NET.WindowsForms.Markers.GMapMarkerGoogleGreen markerG1 =
                     new GMap.NET.WindowsForms.Markers.GMapMarkerGoogleGreen(
                     new GMap.NET.PointLatLng(shir, dolg));
                 markerG1.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(markerG1);
                 //Указываем, что подсказку маркера, необходимо отображать всегда.
-                markerG1.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+                markerG1.ToolTipMode = MarkerTooltipMode.OnMouseOver;
                 gMapControl1.OnMarkerClick += MarkerClick;
                 string dataMarker = string.Empty;
                 //Текст подсказки маркера.               
@@ -502,15 +506,15 @@ FROM Bankomat");
             {
                 //Создаем новый список маркеров, с указанием компонента 
                 //в котором они будут использоваться и названием списка.
-                GMap.NET.WindowsForms.GMapOverlay markersOverlayR =
-                    new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+                GMapOverlay markersOverlayR =
+                    new GMapOverlay(gMapControl1, "marker");
                 //Инициализация нового ЗЕЛЕНОГО маркера, с указанием его координат.
                 GMap.NET.WindowsForms.Markers.GMapMarkerGoogleRed markerR =
                     new GMap.NET.WindowsForms.Markers.GMapMarkerGoogleRed(
                     new GMap.NET.PointLatLng(shir, dolg));
                 markerR.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(markerR);
                 //Указываем, что подсказку маркера, необходимо отображать всегда.
-                markerR.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+                markerR.ToolTipMode = MarkerTooltipMode.OnMouseOver;
                 gMapControl1.OnMarkerClick += MarkerClick;
                 string dataMarker = string.Empty;
                 //Текст подсказки маркера.               
@@ -527,7 +531,7 @@ FROM Bankomat");
             }
             private void Form1_FormClosing(object sender, FormClosingEventArgs e)
             {
-                AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+                AnimateWindow(Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
             }
             int bankomat_sum1 = 1;
             int infotable_sum1 = 1;
@@ -689,14 +693,14 @@ FROM Banki");
         }
         private void bank_metka_test(double shir, double dolg, string adress, string opiss)
         {
-            GMap.NET.WindowsForms.GMapOverlay test =
-                    new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+            GMapOverlay test =
+                    new GMapOverlay(gMapControl1, "marker");
             Image bank_met = Properties.Resources.marker2_11;
             GMapMarkerImage rkc =
              new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), bank_met);
             rkc.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(rkc);
             //Указываем, что подсказку маркера, необходимо отображать всегда.
-            rkc.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+            rkc.ToolTipMode = MarkerTooltipMode.OnMouseOver;
             gMapControl1.OnMarkerClick += MarkerClick;
             string dataMarker = string.Empty;
             //Текст подсказки маркера.               
@@ -982,7 +986,7 @@ WHERE ID =" + "'" + id + "'");
                      glawn_sotrudnik_inkasacii();
                      sotrudnik_inkasacii();
                      voditel_inkasacii();
-                     oformlenie oformlenie = new GoogleAPIroutes_GMap.oformlenie();
+                     oformlenie oformlenie = new oformlenie();
                      oformlenie.Show();
                      oformlenie.автомобильTextBox.Text = model;
                      oformlenie.гос_номерTextBox.Text = nomer;
@@ -1005,7 +1009,7 @@ WHERE ID =" + "'" + id + "'");
                         glawn_sotrudnik_inkasacii();
                         voditel_inkasacii();
                          injener();
-                        oformlenie oformlenie = new GoogleAPIroutes_GMap.oformlenie();
+                        oformlenie oformlenie = new oformlenie();
                         oformlenie.Show();
                         oformlenie.автомобильTextBox.Text = model;
                         oformlenie.гос_номерTextBox.Text = nomer;
@@ -1051,14 +1055,14 @@ FROM Banki");
             }
         private void Bank_metka(double shir, double dolg, string adress, string opiss)
             {
-                GMap.NET.WindowsForms.GMapOverlay markersrkc =
-                       new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+                GMapOverlay markersrkc =
+                       new GMapOverlay(gMapControl1, "marker");
                 Image bank_met = Properties.Resources.marker2_11;
                 GMapMarkerImage rkc =
                  new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), bank_met);
                 rkc.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(rkc);
                 //Указываем, что подсказку маркера, необходимо отображать всегда.
-                rkc.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+                rkc.ToolTipMode = MarkerTooltipMode.OnMouseOver;
                 gMapControl1.OnMarkerClick += MarkerClick;
                 string dataMarker = string.Empty;
                 //Текст подсказки маркера.               
@@ -1102,14 +1106,14 @@ FROM RKC");
                 }         
             private void RKC_metka(double shir, double dolg, string adress, string opiss)
             {
-                    GMap.NET.WindowsForms.GMapOverlay markersrkc =
-                    new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+                    GMapOverlay markersrkc =
+                    new GMapOverlay(gMapControl1, "marker");
                     Image rkc_met = Properties.Resources.marker1;
                     GMapMarkerImage rkc =
                      new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), rkc_met);
                     rkc.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(rkc);
                     //Указываем, что подсказку маркера, необходимо отображать всегда.
-                    rkc.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+                    rkc.ToolTipMode = MarkerTooltipMode.OnMouseOver;
                     gMapControl1.OnMarkerClick += MarkerClick;
                     string dataMarker = string.Empty;
                     //Текст подсказки маркера.               
@@ -1157,15 +1161,15 @@ FROM infotable");
         {
             //Создаем новый список маркеров, с указанием компонента 
             //в котором они будут использоваться и названием списка.
-            GMap.NET.WindowsForms.GMapOverlay markersOverlay1 =
-                new GMap.NET.WindowsForms.GMapOverlay(gMapControl1, "marker");
+            GMapOverlay markersOverlay1 =
+                new GMapOverlay(gMapControl1, "marker");
             //Инициализация нового ЗЕЛЕНОГО маркера, с указанием его координат.
             Image info = Properties.Resources.MapMarker_Board_Azure;
             GMapMarkerImage infotable =
              new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), info);
             infotable.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(infotable);
             //Указываем, что подсказку маркера, необходимо отображать всегда.
-            infotable.ToolTipMode = GMap.NET.WindowsForms.MarkerTooltipMode.OnMouseOver;
+            infotable.ToolTipMode = MarkerTooltipMode.OnMouseOver;
             gMapControl1.OnMarkerClick += MarkerClick;
             string dataMarker = string.Empty;
             //Текст подсказки маркера.               
@@ -1200,13 +1204,13 @@ FROM infotable");
             {
                 Admin admin = new Admin();
                 admin.Show();
-                this.Hide();
+                Hide();
             }
             private void назадToolStripMenuItem_Click(object sender, EventArgs e)
             {
                 Authorizationcs aut = new Authorizationcs();
                 aut.Show();
-                this.Hide();
+                Hide();
             }
             private void выходToolStripMenuItem_Click(object sender, EventArgs e)
             {
@@ -1216,7 +1220,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1226,7 +1230,7 @@ FROM infotable");
             {
                 Finery finery = new Finery();
                 finery.Show();
-                this.Hide();
+                Hide();
             }
             private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
             {
@@ -1241,7 +1245,7 @@ FROM infotable");
             {
                 frmMain frmain = new frmMain();
                 frmain.Show();
-                this.Hide();
+                Hide();
             }
             private void Form1_KeyUp(object sender, KeyEventArgs e)
             {
@@ -1276,7 +1280,7 @@ FROM infotable");
                     DialogResult result;
                     result = MessageBox.Show("Проверьте доступ к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
 
-                    if (result == System.Windows.Forms.DialogResult.Retry)
+                    if (result == DialogResult.Retry)
                     {
                         Form1_Load(sender, e);
                     }
@@ -1295,7 +1299,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1306,7 +1310,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1317,7 +1321,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1328,7 +1332,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1339,7 +1343,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1350,7 +1354,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {
@@ -1361,7 +1365,7 @@ FROM infotable");
             {
                 get
                 {
-                    throw new System.NotImplementedException();
+                    throw new NotImplementedException();
                 }
                 set
                 {

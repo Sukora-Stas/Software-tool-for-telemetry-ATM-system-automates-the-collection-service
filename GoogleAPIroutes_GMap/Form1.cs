@@ -33,7 +33,7 @@ namespace GoogleAPIroutes_GMap
             AW_VER_NEGATIVE = 0x00000008,
             AW_CENTER = 0x00000010,
             AW_HIDE = 0x00010000,
-            AW_ACTIVATE = 0x00020000,
+            AwActivate = 0x00020000,
             AW_SLIDE = 0x00040000,
             AW_BLEND = 0x00080000
 
@@ -986,7 +986,7 @@ WHERE ID =" + "'" + id + "'");
                      glawn_sotrudnik_inkasacii();
                      sotrudnik_inkasacii();
                      voditel_inkasacii();
-                     oformlenie oformlenie = new oformlenie();
+                     Oformlenie oformlenie = new Oformlenie();
                      oformlenie.Show();
                      oformlenie.автомобильTextBox.Text = model;
                      oformlenie.гос_номерTextBox.Text = nomer;
@@ -1009,7 +1009,7 @@ WHERE ID =" + "'" + id + "'");
                         glawn_sotrudnik_inkasacii();
                         voditel_inkasacii();
                          injener();
-                        oformlenie oformlenie = new oformlenie();
+                        Oformlenie oformlenie = new Oformlenie();
                         oformlenie.Show();
                         oformlenie.автомобильTextBox.Text = model;
                         oformlenie.гос_номерTextBox.Text = nomer;
@@ -1306,7 +1306,7 @@ FROM infotable");
                 }
             }
 
-            public oformlenie Оформление
+            public Oformlenie Оформление
             {
                 get
                 {

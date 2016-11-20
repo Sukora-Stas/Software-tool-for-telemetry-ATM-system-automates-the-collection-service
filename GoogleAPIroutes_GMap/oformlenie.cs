@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace GoogleAPIroutes_GMap
 {
-    public partial class oformlenie : Form
+    public partial class Oformlenie : Form
     {
-        public oformlenie()
+        public Oformlenie()
         {
             InitializeComponent();
         }
@@ -26,18 +21,17 @@ namespace GoogleAPIroutes_GMap
         }
         public void oform_load()
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.finery". При необходимости она может быть перемещена или удалена.
             this.fineryTableAdapter.Fill(this.inkasaciaDataSet.finery);
             this.fineryBindingSource.AddNew();
         }
-        int m;
-        private void randomchik()
+        int _m;
+        private void Randomchik()
         {
             Random rnd = new Random();
-            m = rnd.Next(1, 999); ;
-            proverka(m);
+            _m = rnd.Next(1, 999);
+            Proverka(_m);
         }
-        private void proverka(int m)
+        private void Proverka(int m)
         {
             string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
@@ -56,7 +50,7 @@ FROM finery");
                 int podr = Convert.ToInt32(dr.ItemArray[0]);
                 if (podr==m)
                 {
-                    randomchik();
+                    Randomchik();
                 }
             }
         }
@@ -65,8 +59,8 @@ FROM finery");
             this.fineryTableAdapter.Fill(this.inkasaciaDataSet.finery);
             this.fineryBindingSource.AddNew();
             завершёнCheckBox.Checked = false;
-            randomchik();
-            поздразделениеTextBox.Text = Convert.ToString(m);
+            Randomchik();
+            поздразделениеTextBox.Text = Convert.ToString(_m);
         }
         public string id;
         private string TemplateFileName = @"D:\Преддипломная практика\Diplom\GoogleAPIroutes_GMap\inkass.docx";//путь к файлу
@@ -78,7 +72,7 @@ FROM finery");
             range.Find.ClearFormatting();//метод сброса всех натсроек текста
             range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);//находим ключевые слова и заменяем их
         }
-        private void poiskIN(string familia)
+        private void PoiskIn(string familia)
         {
              string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
@@ -99,29 +93,29 @@ FROM Sotrudnik");
                     string otche = Convert.ToString(dr.ItemArray[2]);
                     if (familia==fam)
                     {
-                       Name = Convert.ToString(nam[0]);
-                        Otche = Convert.ToString(otche[0]);
+                       _name = Convert.ToString(nam[0]);
+                        _otche = Convert.ToString(otche[0]);
                     }
                 }
             }
-        string Name,Otche;
+        string _name,_otche;
         public void save()
         {
             DateTime now = DateTime.Now;
-            dateTimePicker1.Text = Convert.ToString(now);
+            dateTimePicker1.Text = Convert.ToString(now, CultureInfo.InvariantCulture);
             dateTimePicker1.MinDate = DateTime.Now;
             var id_bankomat = id;
             var data = dateTimePicker1.Text;
-            poiskIN(главный_инкасаторTextBox.Text);
-            var glawn = главный_инкасаторTextBox.Text + " " + Name + "." + Otche + ".";
-            poiskIN(второй_инкасаторTextBox.Text);
-            var glawn1 = второй_инкасаторTextBox.Text + " " + Name + "." + Otche + ".";
-            poiskIN(инженерTextBox.Text);
-            var injener = инженерTextBox.Text + " " + Name + "." + Otche + ".";
+            PoiskIn(главный_инкасаторTextBox.Text);
+            var glawn = главный_инкасаторTextBox.Text + " " + _name + "." + _otche + ".";
+            PoiskIn(второй_инкасаторTextBox.Text);
+            var glawn1 = второй_инкасаторTextBox.Text + " " + _name + "." + _otche + ".";
+            PoiskIn(инженерTextBox.Text);
+            var injener = инженерTextBox.Text + " " + _name + "." + _otche + ".";
             var auto = автомобильTextBox.Text;
             var numer = гос_номерTextBox.Text;
-            poiskIN(водительTextBox.Text);
-            var voditel = водительTextBox.Text + " " + Name + "." + Otche + ".";
+            PoiskIn(водительTextBox.Text);
+            var voditel = водительTextBox.Text + " " + _name + "." + _otche + ".";
             var objec = объект_обслуживанияTextBox.Text;
             var podraz = поздразделениеTextBox.Text;
             var wordApp = new Word.Application();//переменная для word

@@ -1,6 +1,6 @@
 ﻿namespace GoogleAPIroutes_GMap
 {
-    partial class oformlenie
+    partial class Oformlenie
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@
             System.Windows.Forms.Label объект_обслуживанияLabel;
             System.Windows.Forms.Label завершёнLabel;
             System.Windows.Forms.Label поздразделениеLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(oformlenie));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Oformlenie));
             this.inkasaciaDataSet = new GoogleAPIroutes_GMap.InkasaciaDataSet();
             this.fineryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fineryTableAdapter = new GoogleAPIroutes_GMap.InkasaciaDataSetTableAdapters.fineryTableAdapter();
@@ -381,7 +381,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Оформление";
+            this._name = "Оформление";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оформление";
             this.Load += new System.EventHandler(this.oformlenie_Load);

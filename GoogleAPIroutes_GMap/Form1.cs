@@ -36,10 +36,6 @@ namespace GoogleAPIroutes_GMap
             AwActivate = 0x00020000,
             AW_SLIDE = 0x00040000,
             AW_BLEND = 0x00080000
-
-
-
-
         }
         [DllImport("user32.dll")]
         static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);

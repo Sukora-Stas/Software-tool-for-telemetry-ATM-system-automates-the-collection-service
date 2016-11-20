@@ -143,7 +143,7 @@ FROM Sotrudnik");
                 }
                 catch
                 {
-                    MessageBox.Show("Произошла ошибка вывода данных в MS Office!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
             }
             if (textBox1.Text == "2")
@@ -198,7 +198,7 @@ FROM Sotrudnik");
                 }
                 catch
                 {
-                    MessageBox.Show("Произошла ошибка вывода данных в MS Office!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
             }
                 try
@@ -209,7 +209,7 @@ FROM Sotrudnik");
                 }
                 catch
                 {
-                    MessageBox.Show("Ошибка сохранения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
                 Form1 form1 = new Form1();
                 form1.Owner = this;

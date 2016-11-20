@@ -173,7 +173,7 @@ namespace GoogleAPIroutes_GMap
             selectedMain();
             listBoxMain.Items.Add("=Finish!=");
             selectedMain();
-            MessageBox.Show("Готово!", "Работа завершена!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(@"Проверьте доступ к интернету!", "Работа завершена!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void selectedMain()
         {
@@ -278,7 +278,7 @@ namespace GoogleAPIroutes_GMap
             }
             if (!File.Exists(file))
             {
-                MessageBox.Show("Файл логов не создан", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private String getPathLog(Boolean flag)
@@ -295,13 +295,13 @@ namespace GoogleAPIroutes_GMap
             listBoxMain.Items.Clear();
             if (!File.Exists("Ionic.Zip.dll"))
             {
-                MessageBox.Show("Библиотека Ionic.Zip.dll не найдена, дальнейшая работа невозможна", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.ExitThread();
             }
 
             if (!loadIni(fileIni))
             {
-                MessageBox.Show("Отсуствует файл настроек - tools.ini", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
             }
             pathIn = getPath(pathIn);
@@ -309,19 +309,19 @@ namespace GoogleAPIroutes_GMap
             pathLog = getPath(pathLog);
             if (dir == "")
             {
-                MessageBox.Show("Директория для поиска не определена", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnDir.Visible = true;
             }
             if (!Directory.Exists(pathIn))
             {
-                MessageBox.Show("Отсуствует IN директория", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnIn.Visible = true;
             }
             if (!Directory.Exists(pathOut))
             {
-                MessageBox.Show("Отсуствует OUT директория", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnOut.Visible = true;
             }
@@ -423,7 +423,7 @@ namespace GoogleAPIroutes_GMap
             //редактирование
             if (!loadIni(fileIni))
             {
-                MessageBox.Show("Отсуствует файл настроек - tools.ini", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
             }
             if (btnDir.Visible == true && btnIn.Visible == true && btnLog.Visible == true && btnOut.Visible == true)
@@ -472,7 +472,7 @@ namespace GoogleAPIroutes_GMap
         private void btnIn_Click(object sender, EventArgs e)
         {
             Process.Start("tools.ini");
-            DialogResult res = MessageBox.Show("Редактирование tools.ini", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult res = MessageBox.Show(@"Проверьте доступ к интернету!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
                 loadForm();

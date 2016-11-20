@@ -140,23 +140,23 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
             //исключения 
             if (ширинаTextBox.Text == "" && долготаTextBox.Text == "" && адресTextBox.Text == "" && городComboBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Ширина", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Долгота", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Адрес", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, выберите город", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox.Text != "" && долготаTextBox.Text != "" && адресTextBox.Text != "" && городComboBox.Text != "")
             {
@@ -177,7 +177,7 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
                 catch
                 {
                     //исключение
-                    MessageBox.Show("Ошибка добавления", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -242,27 +242,27 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
             //проработанные исключения
             if (ширинаTextBox1.Text == "" && долготаTextBox1.Text == "" &&описаниеTextBox.Text=="" && адресTextBox1.Text == "" && городComboBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Ширина", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Долгота", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (описаниеTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Описание", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Адрес", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, выберите город", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }          
             else if (ширинаTextBox1.Text != "" && долготаTextBox1.Text != "" && описаниеTextBox.Text != "" && адресTextBox1.Text != "" && городComboBox1.Text != "")
             {
@@ -284,7 +284,7 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
                 catch
                 {
                     //исключение
-                    MessageBox.Show("Ошибка добавления", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -314,23 +314,23 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
             //исключения
             if (ширинаTextBox2.Text == "" && долготаTextBox2.Text == "" && адресTextBox2.Text == "" && городComboBox2.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox2.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Ширина", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox2.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Долгота", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox2.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Адрес", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox2.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, выберите город", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox2.Text != "" && долготаTextBox2.Text != "" && адресTextBox2.Text != "" && городComboBox2.Text != "")
             {
@@ -351,7 +351,7 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
                 catch
                 {
                     //исключение
-                    MessageBox.Show("Ошибка добавления", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -377,23 +377,23 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
             //проверка данных
             if (имяTextBox.Text == "" && фамилияTextBox.Text == "" && отчествоTextBox.Text == "" && инкасаторCheckBox.Checked == false && водительCheckBox.Checked == false && инженерCheckBox.Checked == false)
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (имяTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните Имя", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (фамилияTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните Фамилию", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (отчествоTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните Отчество", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (инкасаторCheckBox.Checked == false && водительCheckBox.Checked == false && инженерCheckBox.Checked == false)
             {
-                MessageBox.Show("Ошибка. Выберите должность", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (имяTextBox.Text != "" && фамилияTextBox.Text != "" && отчествоTextBox.Text != "")
             {
@@ -415,7 +415,7 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
                 catch
                 {
                     //исключение
-                    MessageBox.Show("Ошибка добавления", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -462,19 +462,19 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
             //прописанные исключения
             if (модельTextBox.Text == "" && maskedTextBox1.Text == "" && свободенCheckBox.Checked == false)
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (модельTextBox.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Модель!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (maskedTextBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните государственный номер!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (свободенCheckBox.Checked == false)
             {
-                MessageBox.Show("Ошибка. Автомобиль может добавляться только свободный!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (модельTextBox.Text != "" && maskedTextBox1.Text != "" && свободенCheckBox.Checked != false)
             {
@@ -493,7 +493,7 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
                 catch
                 {
                     //ошибкиа исключения
-                    MessageBox.Show("Ошибка добавления", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -670,27 +670,27 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
             //проработанные исключения 
             if (ширинаTextBox3.Text == "" && долготаTextBox3.Text == "" && описаниеTextBox1.Text == "" && адресTextBox3.Text == "" && городComboBox3.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox3.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Ширина", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox3.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Долгота", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (описаниеTextBox1.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Описание", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox3.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, заполните поле - Адрес", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox3.Text == "")
             {
-                MessageBox.Show("Ошибка. Нельзя оставлять поля пустыми, выберите город", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox3.Text != "" && долготаTextBox3.Text != "" && описаниеTextBox1.Text != "" && адресTextBox3.Text != "" && городComboBox3.Text != "")
             {
@@ -712,7 +712,7 @@ static  extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flag
                 catch
                 {
                     //ошибка в случае сохранения
-                    MessageBox.Show("Ошибка добавления", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

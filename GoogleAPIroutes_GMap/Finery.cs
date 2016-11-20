@@ -175,7 +175,7 @@ FROM Sotrudnik");
             var COM = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
             int pod = Convert.ToInt32(COM);
             DialogResult result;
-            result = MessageBox.Show("Подтвердить возвращение наряда?", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            result = MessageBox.Show(@"Проверьте доступ к интернету!", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 //создание подключения
@@ -310,7 +310,7 @@ AboutBox1 about = new AboutBox1();
             int pod = podrrrr;
 
             DialogResult result;
-            result = MessageBox.Show("Подтвердить возвращение наряда?", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            result = MessageBox.Show(@"Проверьте доступ к интернету!", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 //создание подключения
@@ -494,7 +494,7 @@ WHERE Поздразделение=" + "'" + podr + "'");
             var COM = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
             int pod = Convert.ToInt32(COM);
             DialogResult result;
-            result = MessageBox.Show("Подтвердить возвращение наряда?", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            result = MessageBox.Show(@"Проверьте доступ к интернету!", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 //создание подключения

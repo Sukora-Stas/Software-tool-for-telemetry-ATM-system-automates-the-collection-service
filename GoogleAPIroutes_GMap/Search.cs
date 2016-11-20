@@ -32,7 +32,7 @@ namespace GoogleAPIroutes_GMap
             {
                 //проверка подключения к интернету
                 DialogResult result;
-                result = MessageBox.Show("Проверьте подключение к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                result = MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
 
                 if (result == System.Windows.Forms.DialogResult.Retry)
                 {

@@ -78,40 +78,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.cs">
+    <Compile Include="Forms\AboutBox1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox1.Designer.cs">
+    <Compile Include="Forms\AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin.cs">
+    <Compile Include="Forms\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin.Designer.cs">
+    <Compile Include="Forms\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Authorizationcs.cs">
+    <Compile Include="Forms\Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authorizationcs.Designer.cs">
-      <DependentUpon>Authorizationcs.cs</DependentUpon>
+    <Compile Include="Forms\Authorization.Designer.cs">
+      <DependentUpon>Authorization.cs</DependentUpon>
     </Compile>
-    <Compile Include="Finery.cs">
+    <Compile Include="Forms\Finery.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Finery.Designer.cs">
+    <Compile Include="Forms\Finery.Designer.cs">
       <DependentUpon>Finery.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="GMapMarkerImage.cs" />
@@ -121,64 +121,64 @@
       <DependentUpon>InkasaciaDataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Logo.cs">
+    <Compile Include="Forms\Logo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Logo.Designer.cs">
+    <Compile Include="Forms\Logo.Designer.cs">
       <DependentUpon>Logo.cs</DependentUpon>
     </Compile>
-    <Compile Include="oformlenie.cs">
+    <Compile Include="Forms\oformlenie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="oformlenie.Designer.cs">
+    <Compile Include="Forms\oformlenie.Designer.cs">
       <DependentUpon>oformlenie.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_autopark.cs">
+    <Compile Include="Reports\otchet_autopark.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_autopark.Designer.cs">
+    <Compile Include="Reports\otchet_autopark.Designer.cs">
       <DependentUpon>otchet_autopark.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_banki.cs">
+    <Compile Include="Reports\otchet_banki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_banki.Designer.cs">
+    <Compile Include="Reports\otchet_banki.Designer.cs">
       <DependentUpon>otchet_banki.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_bankomati.cs">
+    <Compile Include="Reports\otchet_bankomati.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_bankomati.Designer.cs">
+    <Compile Include="Reports\otchet_bankomati.Designer.cs">
       <DependentUpon>otchet_bankomati.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_infokiosk.cs">
+    <Compile Include="Reports\otchet_infokiosk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_infokiosk.Designer.cs">
+    <Compile Include="Reports\otchet_infokiosk.Designer.cs">
       <DependentUpon>otchet_infokiosk.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_ispolz.cs">
+    <Compile Include="Reports\otchet_ispolz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_ispolz.Designer.cs">
+    <Compile Include="Reports\otchet_ispolz.Designer.cs">
       <DependentUpon>otchet_ispolz.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_narad.cs">
+    <Compile Include="Reports\otchet_narad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_narad.Designer.cs">
+    <Compile Include="Reports\otchet_narad.Designer.cs">
       <DependentUpon>otchet_narad.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_RKC.cs">
+    <Compile Include="Reports\otchet_RKC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_RKC.Designer.cs">
+    <Compile Include="Reports\otchet_RKC.Designer.cs">
       <DependentUpon>otchet_RKC.cs</DependentUpon>
     </Compile>
-    <Compile Include="otchet_sotrudniki.cs">
+    <Compile Include="Reports\otchet_sotrudniki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="otchet_sotrudniki.Designer.cs">
+    <Compile Include="Reports\otchet_sotrudniki.Designer.cs">
       <DependentUpon>otchet_sotrudniki.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -186,70 +186,69 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Registration.cs">
+    <Compile Include="Forms\Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registration.Designer.cs">
+    <Compile Include="Forms\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="form2_2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search.cs">
+    <Compile Include="Forms\Search.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Search.Designer.cs">
+    <Compile Include="Forms\Search.Designer.cs">
       <DependentUpon>Search.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AboutBox1.resx">
+    <EmbeddedResource Include="Forms\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin.resx">
+    <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authorizationcs.resx">
-      <DependentUpon>Authorizationcs.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Authorization.resx">
+      <DependentUpon>Authorization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Finery.resx">
+    <EmbeddedResource Include="Forms\Finery.resx">
       <DependentUpon>Finery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Logo.resx">
+    <EmbeddedResource Include="Forms\Logo.resx">
       <DependentUpon>Logo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="oformlenie.resx">
+    <EmbeddedResource Include="Forms\oformlenie.resx">
       <DependentUpon>oformlenie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_autopark.resx">
+    <EmbeddedResource Include="Reports\otchet_autopark.resx">
       <DependentUpon>otchet_autopark.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_banki.resx">
+    <EmbeddedResource Include="Reports\otchet_banki.resx">
       <DependentUpon>otchet_banki.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_bankomati.resx">
+    <EmbeddedResource Include="Reports\otchet_bankomati.resx">
       <DependentUpon>otchet_bankomati.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_infokiosk.resx">
+    <EmbeddedResource Include="Reports\otchet_infokiosk.resx">
       <DependentUpon>otchet_infokiosk.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_ispolz.resx">
+    <EmbeddedResource Include="Reports\otchet_ispolz.resx">
       <DependentUpon>otchet_ispolz.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_narad.resx">
+    <EmbeddedResource Include="Reports\otchet_narad.resx">
       <DependentUpon>otchet_narad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_RKC.resx">
+    <EmbeddedResource Include="Reports\otchet_RKC.resx">
       <DependentUpon>otchet_RKC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="otchet_sotrudniki.resx">
+    <EmbeddedResource Include="Reports\otchet_sotrudniki.resx">
       <DependentUpon>otchet_sotrudniki.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registration.resx">
+    <EmbeddedResource Include="Forms\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -257,12 +256,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Search.resx">
+    <EmbeddedResource Include="Forms\Search.resx">
       <DependentUpon>Search.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="InkasaciaDataSet.xsc">
       <DependentUpon>InkasaciaDataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

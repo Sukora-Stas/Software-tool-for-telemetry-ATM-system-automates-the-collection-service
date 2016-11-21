@@ -114,3 +114,4 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Properties.Resources.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Search.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.csproj.GenerateResource.Cache
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\Software tool for telemetry ATM system.exe.config

@@ -422,21 +422,21 @@ FROM Bankomat");
         class GMapMarkerImage : GMapMarker
         {
             //получение картинок
-            private Image image;
+            private Image _image;
             public Image Image
             {
                 get
                 {
-                    return image;
+                    return _image;
                 }
                 set
                 {
-                    image = value;
-                    if (image != null)
+                    _image = value;
+                    if (_image != null)
                     {
                         Size =
-                            new Size(image.Width,
-                                image.Height);
+                            new Size(_image.Width,
+                                _image.Height);
                     }
                 }
             }
@@ -454,18 +454,18 @@ FROM Bankomat");
                     new Point(
                         -Size.Width / 2,
                         -Size.Height / 2);
-                this.image = image;
+                this._image = image;
             }
             public override void OnRender(Graphics g)
             {
-                if (image != null)
+                if (_image != null)
                 {
                     Rectangle rect =
                         new Rectangle(LocalPosition.X,
                                       LocalPosition.Y,
                                       Size.Width,
                                       Size.Height);
-                    g.DrawImage(image, rect);
+                    g.DrawImage(_image, rect);
                 }
             }
         }
@@ -524,13 +524,13 @@ FROM Bankomat");
             {
                 AnimateWindow(Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
             }
-            int bankomat_sum1 = 1;
-            int infotable_sum1 = 1;
-            int RKC_sum1 = 1;
-            int bank_sum1 = 1;
+            int _bankomatSum1 = 1;
+            int _infotableSum1 = 1;
+            int _rkcSum1 = 1;
+            int _bankSum1 = 1;
             private void bankomat_sum()
             {
-                bankomat_sum1 = 1;
+                _bankomatSum1 = 1;
                 //параметры подключения
                  string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
@@ -547,12 +547,12 @@ FROM Bankomat");
                     foreach (DataRow dr in drArr)
                     {
                         //получения суумы банкоматов для рандома
-                            bankomat_sum1++;
+                            _bankomatSum1++;
                     }
             }
         private void infotable_sum()
             {
-                infotable_sum1 = 1;
+                _infotableSum1 = 1;
                 string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 // MessageBox.Show(sParamConnection+""); 
@@ -569,12 +569,12 @@ FROM infotable");
                 foreach (DataRow dr in drArr)
                 {
                  //получение суммы инфокиосков
-                        infotable_sum1++;
+                        _infotableSum1++;
                 }
             }
         private void RKC_sum()
         {
-            RKC_sum1 = 1;         
+            _rkcSum1 = 1;         
             string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             // MessageBox.Show(sParamConnection+""); 
@@ -591,12 +591,12 @@ FROM RKC");
             foreach (DataRow dr in drArr)
             {
                 //сумма ркц
-                    RKC_sum1++;
+                    _rkcSum1++;
             }
         }
         private void bank_sum()
         {
-            bank_sum1 = 1;
+            _bankSum1 = 1;
            
             string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
@@ -613,7 +613,7 @@ FROM RKC");
             foreach (DataRow dr in drArr)
             {
                 //сумма банков
-                    bank_sum1++;
+                    _bankSum1++;
             }
             connection.Close();
         }
@@ -635,7 +635,7 @@ FROM Banki");
 
                 foreach (DataRow dr in drArr)
                 {
-                    bank_sum1++;
+                    _bankSum1++;
                 }
                 connection.Close();
                 bank_test();

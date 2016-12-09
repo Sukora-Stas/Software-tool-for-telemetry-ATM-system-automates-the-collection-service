@@ -10,6 +10,8 @@ using System.Net.NetworkInformation;
 using System.Data.SqlClient;
 //директива для работы с картами
 using GMap.NET.WindowsForms;
+using GoogleAPIroutes_GMap.Forms;
+
 namespace GoogleAPIroutes_GMap
 {
     public partial class Main : Form

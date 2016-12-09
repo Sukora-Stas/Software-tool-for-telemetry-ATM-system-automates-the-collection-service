@@ -12,32 +12,18 @@ namespace GoogleAPIroutes_GMap.Forms
             InitializeComponent();
         }
         // дефолтная билиотека
-        private void bankomatBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            //сохранение БД
-            this.Validate();
-            this.bankomatBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-        }
-        public string shir, dolg;
+        public string Shir, Dolg;
         public void Admin_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Banki". При необходимости она может быть перемещена или удалена.
-            this.bankiTableAdapter.Fill(this.inkasaciaDataSet.Banki);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.infotable". При необходимости она может быть перемещена или удалена.
-            this.infotableTableAdapter.Fill(this.inkasaciaDataSet.infotable);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Autopark". При необходимости она может быть перемещена или удалена.
-            this.autoparkTableAdapter.Fill(this.inkasaciaDataSet.Autopark);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Sotrudnik". При необходимости она может быть перемещена или удалена.
-            this.sotrudnikTableAdapter.Fill(this.inkasaciaDataSet.Sotrudnik);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.infotable". При необходимости она может быть перемещена или удалена.
-            this.infotableTableAdapter.Fill(this.inkasaciaDataSet.infotable);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.RKC". При необходимости она может быть перемещена или удалена.
-            this.rKCTableAdapter.Fill(this.inkasaciaDataSet.RKC); 
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Bankomat". При необходимости она может быть перемещена или удалена.
-            this.bankomatTableAdapter.Fill(this.inkasaciaDataSet.Bankomat);
+            bankiTableAdapter.Fill(inkasaciaDataSet.Banki);
+            infotableTableAdapter.Fill(inkasaciaDataSet.infotable);
+            autoparkTableAdapter.Fill(inkasaciaDataSet.Autopark);
+            sotrudnikTableAdapter.Fill(inkasaciaDataSet.Sotrudnik);
+            infotableTableAdapter.Fill(inkasaciaDataSet.infotable);
+            rKCTableAdapter.Fill(inkasaciaDataSet.RKC); 
+            bankomatTableAdapter.Fill(inkasaciaDataSet.Bankomat);
         }
-        public void tabpage(string shirina, string dolgota)
+        public void Tabpage(string shirina, string dolgota)
         {     
             Search search = new Search();
             search.Owner = this;
@@ -103,7 +89,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void button1_Click_1(object sender, EventArgs e)
         {
             //предварительные действия перед началом работы с формой
-            this.bankomatBindingSource.AddNew();
+            bankomatBindingSource.AddNew();
             долготаTextBox.Enabled = true;
             ширинаTextBox.Enabled = true;
             долготаTextBox.Text = "";
@@ -119,32 +105,32 @@ namespace GoogleAPIroutes_GMap.Forms
             //исключения 
             if (ширинаTextBox.Text == "" && долготаTextBox.Text == "" && адресTextBox.Text == "" && городComboBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox.Text != "" && долготаTextBox.Text != "" && адресTextBox.Text != "" && городComboBox.Text != "")
             {
                 try
                 {
                     //сохранение данных в БД
-                    this.Validate();
-                    this.bankomatBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                   Validate();
+                    bankomatBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                     долготаTextBox.Enabled = false;
                     ширинаTextBox.Enabled = false;
                     адресTextBox.Enabled = false;

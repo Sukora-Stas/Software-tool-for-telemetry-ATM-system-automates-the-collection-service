@@ -180,7 +180,7 @@ namespace GoogleAPIroutes_GMap
         private void MarkerClick(object sender, EventArgs e)
         {
             Admin admin = this.Owner as Admin;
-            admin.tabpage(shir, dolg);
+            admin.Tabpage(shir, dolg);
             this.Close();
         }
      public   string shir, dolg;

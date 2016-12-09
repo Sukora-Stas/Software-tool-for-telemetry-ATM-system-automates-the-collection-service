@@ -1,16 +1,9 @@
 ﻿//подключаемые дерективы
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+using System;
+using System.Windows.Forms;
+
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Admin : Form
     {

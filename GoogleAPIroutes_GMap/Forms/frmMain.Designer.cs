@@ -1,4 +1,4 @@
-﻿namespace GoogleAPIroutes_GMap
+﻿namespace GoogleAPIroutes_GMap.Forms
 {
     partial class frmMain
     {

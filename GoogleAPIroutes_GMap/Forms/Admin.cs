@@ -414,7 +414,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void button10_Click(object sender, EventArgs e)
         {
             //добавить нового
-            this.autoparkBindingSource.AddNew();
+            autoparkBindingSource.AddNew();
             модельTextBox.Enabled = true;
             maskedTextBox1.Enabled = true;
             свободенCheckBox.Enabled = true;
@@ -614,11 +614,11 @@ namespace GoogleAPIroutes_GMap.Forms
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             //проверка на пустое поле, предупреждающая о необходимости заполнения полей
-            if (maskedTextBox1.Text == "       - ")
+            if (maskedTextBox1.Text == @"       - ")
             {
                 maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(236, 174, 174);
             }
-            else if (maskedTextBox1.Text != "       - ")
+            else if (maskedTextBox1.Text != @"       - ")
             {
                 maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(251, 251, 251);
             }
@@ -684,7 +684,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void button15_Click(object sender, EventArgs e)
         {
             //добавление нового
-            this.bankiBindingSource.AddNew();
+            bankiBindingSource.AddNew();
             долготаTextBox3.Enabled = true;
             описаниеTextBox1.Enabled = true;
             ширинаTextBox3.Enabled = true;
@@ -785,7 +785,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void инкасаторCheckBox_CheckedChanged_1(object sender, EventArgs e)
         {
             //возможность выбора только одно чекбокса
-            if (инкасаторCheckBox.Checked == true)
+            if (инкасаторCheckBox.Checked)
             {
                 водительCheckBox.Checked = false;
                 инженерCheckBox.Checked = false;
@@ -809,15 +809,12 @@ namespace GoogleAPIroutes_GMap.Forms
                 водительCheckBox.Checked = false;
             }
         }
-        public Search Поиск_координат
+        public Search ПоискКоординат
         {
             //поиск координат
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -836,10 +833,7 @@ AboutBox1 about = new AboutBox1();
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
 
@@ -851,8 +845,8 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётРКЦToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_RKC RKC = new otchet_RKC();
-            RKC.Show();
+            otchet_RKC rkc = new otchet_RKC();
+            rkc.Show();
         }
 
         private void отчётБанковToolStripMenuItem_Click(object sender, EventArgs e)

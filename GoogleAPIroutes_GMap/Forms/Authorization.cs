@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Authorization : Form
     {
@@ -18,10 +18,7 @@ namespace GoogleAPIroutes_GMap
             //ссылка на регистрацию
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
         public Main Form1
@@ -29,21 +26,15 @@ namespace GoogleAPIroutes_GMap
             get
             {
                 //ссылка на главную форму
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
 
-        public Main авторизация
+        public Main Авторизация
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
         //подключение картинок для логина
@@ -65,7 +56,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             connection.Open();
             var myTbl = new DataTable();
             //запрос
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Логин, Пароль, ФИО
 FROM LogPas");
@@ -94,12 +85,12 @@ values  (" + "'" + "Авторизация" + "'" + "," + "'" + fio + "'" + "," 
                     //выполнение
                     adapter1.Fill(myTbl1);
                     //приветствие
-                    MessageBox.Show("Добро пожаловать "+fio,"Авторизация выполнена", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show(@"Добро пожаловать "+fio,@"Авторизация выполнена", MessageBoxButtons.OK,MessageBoxIcon.Information);
                     Main form1 = new Main();
                     form1.Show();
                     //закрытие подключения
                     connection.Close();
-                    this.Hide();   
+                    Hide();   
                     //остановка цикла
                     break;        
                 }
@@ -115,7 +106,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             connection.Open();
             var myTbl = new DataTable();
             //запрос
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Логин, Пароль 
 FROM LogPas");
@@ -127,19 +118,18 @@ FROM LogPas");
             {
                 //получение данных
                 string log = Convert.ToString(dr.ItemArray[0]);
-                string pas = Convert.ToString(dr.ItemArray[1]);
                 //проверка, есть ли такой пользователь в БД
                 if (textBox1.Text == log)
                 { 
                     pictureBox2.Image = logtxt_green;
-                    textBox1.BackColor = System.Drawing.Color.FromArgb(217, 244, 216);
+                    textBox1.BackColor = Color.FromArgb(217, 244, 216);
                     break;
                 }
                 else
                 { 
                     //исключение
                     pictureBox2.Image = logtxt_red;
-                    textBox1.BackColor = System.Drawing.Color.FromArgb(248, 236, 236);
+                    textBox1.BackColor =  Color.FromArgb(248, 236, 236);
                 }
             }
         }
@@ -153,7 +143,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             connection.Open();
             var myTbl = new DataTable();
             //запрос
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Логин, Пароль 
 FROM LogPas");
@@ -169,16 +159,16 @@ FROM LogPas");
                 if (textBox1.Text == log && textBox2.Text == pas)
                 {  
                     pictureBox1.Image = pastxt_green;
-                    textBox2.BackColor = System.Drawing.Color.FromArgb(217, 244, 216);
-                    pictureBox3.BackColor = System.Drawing.Color.FromArgb(217, 244, 216);
+                    textBox2.BackColor = Color.FromArgb(217, 244, 216);
+                    pictureBox3.BackColor = Color.FromArgb(217, 244, 216);
                     break;                  
                 }
                 else
                 {    
                     //исключение
                     pictureBox1.Image = pastxt_red;
-                    textBox2.BackColor = System.Drawing.Color.FromArgb(248, 236, 236);
-                    pictureBox3.BackColor = System.Drawing.Color.FromArgb(248, 236, 236);
+                    textBox2.BackColor = Color.FromArgb(248, 236, 236);
+                    pictureBox3.BackColor = Color.FromArgb(248, 236, 236);
                 }
             }
         }
@@ -190,7 +180,7 @@ FROM LogPas");
         private void регистрацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //переход к форме регистрации
-            this.Hide();
+            Hide();
             Registration regist = new Registration();
             regist.Show();
         }

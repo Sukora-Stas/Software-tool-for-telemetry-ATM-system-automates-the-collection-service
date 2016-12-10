@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 //директива для работы с картами
 using GMap.NET.WindowsForms;
 using GoogleAPIroutes_GMap.Forms;
+using Authorization = GoogleAPIroutes_GMap.Forms.Authorization;
 
 namespace GoogleAPIroutes_GMap
 {

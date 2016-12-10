@@ -142,7 +142,7 @@ namespace GoogleAPIroutes_GMap.Forms
                 catch
                 {
                     //исключение
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace GoogleAPIroutes_GMap.Forms
             //кнопка назад
             Main frm1 = new Main();
             frm1.Show();
-            this.Hide();
+            Hide();
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,7 +162,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void button4_Click(object sender, EventArgs e)
         {
             //добавление нового
-            this.rKCBindingSource.AddNew();
+            rKCBindingSource.AddNew();
             долготаTextBox1.Enabled = true;
             описаниеTextBox.Enabled = true;
             ширинаTextBox1.Enabled = true;
@@ -207,36 +207,36 @@ namespace GoogleAPIroutes_GMap.Forms
             //проработанные исключения
             if (ширинаTextBox1.Text == "" && долготаTextBox1.Text == "" &&описаниеTextBox.Text=="" && адресTextBox1.Text == "" && городComboBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (описаниеTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }          
             else if (ширинаTextBox1.Text != "" && долготаTextBox1.Text != "" && описаниеTextBox.Text != "" && адресTextBox1.Text != "" && городComboBox1.Text != "")
             {
                 try
                 {
                     //сохранение
-                    this.Validate();
-                    this.rKCBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                    Validate();
+                    rKCBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                     долготаTextBox1.Enabled = false;
                     описаниеTextBox.Enabled = false;
                     ширинаTextBox1.Enabled = false;
@@ -249,7 +249,7 @@ namespace GoogleAPIroutes_GMap.Forms
                 catch
                 {
                     //исключение
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -263,7 +263,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void button6_Click(object sender, EventArgs e)
         {
             //добавление
-            this.infotableBindingSource.AddNew();
+            infotableBindingSource.AddNew();
             долготаTextBox2.Enabled = true;
             ширинаTextBox2.Enabled = true;
             долготаTextBox2.Text = "";
@@ -279,32 +279,32 @@ namespace GoogleAPIroutes_GMap.Forms
             //исключения
             if (ширинаTextBox2.Text == "" && долготаTextBox2.Text == "" && адресTextBox2.Text == "" && городComboBox2.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox2.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox2.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox2.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox2.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox2.Text != "" && долготаTextBox2.Text != "" && адресTextBox2.Text != "" && городComboBox2.Text != "")
             {
                 try
                 {
                     //сохранение
-                    this.Validate();
-                    this.infotableBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                    Validate();
+                    infotableBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                     долготаTextBox2.Enabled = false;
                     ширинаTextBox2.Enabled = false;
                     адресTextBox2.Enabled = false;
@@ -316,14 +316,14 @@ namespace GoogleAPIroutes_GMap.Forms
                 catch
                 {
                     //исключение
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
         private void button8_Click(object sender, EventArgs e)
         {
             //добавление нового
-            this.sotrudnikBindingSource.AddNew();
+            sotrudnikBindingSource.AddNew();
             фамилияTextBox.Enabled = true;
             имяTextBox.Enabled = true;
             отчествоTextBox.Enabled = true;
@@ -342,32 +342,32 @@ namespace GoogleAPIroutes_GMap.Forms
             //проверка данных
             if (имяTextBox.Text == "" && фамилияTextBox.Text == "" && отчествоTextBox.Text == "" && инкасаторCheckBox.Checked == false && водительCheckBox.Checked == false && инженерCheckBox.Checked == false)
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (имяTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (фамилияTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (отчествоTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (инкасаторCheckBox.Checked == false && водительCheckBox.Checked == false && инженерCheckBox.Checked == false)
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (имяTextBox.Text != "" && фамилияTextBox.Text != "" && отчествоTextBox.Text != "")
             {
                 try
                 {
                     //сохранение
-                    this.Validate();
-                    this.sotrudnikBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                    Validate();
+                    sotrudnikBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                     фамилияTextBox.Enabled = false;
                     имяTextBox.Enabled = false;
                     отчествоTextBox.Enabled = false;
@@ -380,14 +380,14 @@ namespace GoogleAPIroutes_GMap.Forms
                 catch
                 {
                     //исключение
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
         private void инкасаторCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             //возможность выбрать только один чекбокс
-            if (инкасаторCheckBox.Checked == true)
+            if (инкасаторCheckBox.Checked)
             {
                 водительCheckBox.Checked = false;
                 инженерCheckBox.Checked = false;
@@ -396,7 +396,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void водительCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             //возможность выбрать только один чекбокс
-            if (водительCheckBox.Checked == true)
+            if (водительCheckBox.Checked)
             {
                 инкасаторCheckBox.Checked = false;
                 инженерCheckBox.Checked = false;
@@ -405,7 +405,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void инженерCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             //возможность выбрать только один чекбокс
-            if (инженерCheckBox.Checked == true)
+            if (инженерCheckBox.Checked)
             {
                 инкасаторCheckBox.Checked = false;
                 водительCheckBox.Checked = false;
@@ -427,28 +427,28 @@ namespace GoogleAPIroutes_GMap.Forms
             //прописанные исключения
             if (модельTextBox.Text == "" && maskedTextBox1.Text == "" && свободенCheckBox.Checked == false)
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (модельTextBox.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (maskedTextBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (свободенCheckBox.Checked == false)
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (модельTextBox.Text != "" && maskedTextBox1.Text != "" && свободенCheckBox.Checked != false)
+            else if (модельTextBox.Text != "" && maskedTextBox1.Text != "" && свободенCheckBox.Checked)
             {
                 try
                 {
                     //сохранение
-                    this.Validate();
-                    this.autoparkBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                    Validate();
+                    autoparkBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                     модельTextBox.Enabled = false;
                     maskedTextBox1.Enabled = false;
                     свободенCheckBox.Enabled = false;
@@ -458,7 +458,7 @@ namespace GoogleAPIroutes_GMap.Forms
                 catch
                 {
                     //ошибкиа исключения
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -635,36 +635,36 @@ namespace GoogleAPIroutes_GMap.Forms
             //проработанные исключения 
             if (ширинаTextBox3.Text == "" && долготаTextBox3.Text == "" && описаниеTextBox1.Text == "" && адресTextBox3.Text == "" && городComboBox3.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox3.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (долготаTextBox3.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (описаниеTextBox1.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (адресTextBox3.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (городComboBox3.Text == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (ширинаTextBox3.Text != "" && долготаTextBox3.Text != "" && описаниеTextBox1.Text != "" && адресTextBox3.Text != "" && городComboBox3.Text != "")
             {
                 try
                 {
                     //сохранение
-                    this.Validate();
-                    this.bankiBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                    Validate();
+                    bankiBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                     долготаTextBox3.Enabled = false;
                     описаниеTextBox1.Enabled = false;
                     ширинаTextBox3.Enabled = false;
@@ -677,7 +677,7 @@ namespace GoogleAPIroutes_GMap.Forms
                 catch
                 {
                     //ошибка в случае сохранения
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -794,7 +794,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void водительCheckBox_CheckedChanged_1(object sender, EventArgs e)
         {
             //возможность выбора только одно чекбокса
-            if (водительCheckBox.Checked == true)
+            if (водительCheckBox.Checked)
             {
                 инкасаторCheckBox.Checked = false;
                 инженерCheckBox.Checked = false;
@@ -803,7 +803,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void инженерCheckBox_CheckedChanged_1(object sender, EventArgs e)
         {
             //возможность выбора только одно чекбокса
-            if (инженерCheckBox.Checked == true)
+            if (инженерCheckBox.Checked)
             {
                 инкасаторCheckBox.Checked = false;
                 водительCheckBox.Checked = false;

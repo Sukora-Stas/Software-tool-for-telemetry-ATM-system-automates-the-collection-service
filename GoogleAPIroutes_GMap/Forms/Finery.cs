@@ -1,31 +1,19 @@
 ﻿//подключаемые дерективы
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GoogleAPIroutes_GMap.Forms;
+using DataTable = System.Data.DataTable;
 using Word = Microsoft.Office.Interop.Word;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Finery : Form
     {
         public Finery()
         {
             InitializeComponent();
-        }
-        private void fineryBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            //сохранение
-            this.Validate();
-            this.fineryBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
         }
         //путь к файлу
         private string TemplateFileName = @"D:\Преддипломная практика\Diplom\GoogleAPIroutes_GMap\otchet.docx";
@@ -39,7 +27,7 @@ namespace GoogleAPIroutes_GMap
         private void Finery_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.finery". При необходимости она может быть перемещена или удалена.
-            this.fineryTableAdapter.Fill(this.inkasaciaDataSet.finery);
+            fineryTableAdapter.Fill(inkasaciaDataSet.finery);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -70,7 +58,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             connection.Open();
             var myTbl = new DataTable();
             //запрос
-            string sQuery = string.Format(@" 
+            string sQuery =(@" 
 SELECT 
 [Гос. номер], ID
 FROM Autopark");
@@ -109,7 +97,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             connection.Open();
             var myTbl = new DataTable();
             //запрос
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Фамилия,ID
 FROM Sotrudnik");
@@ -137,7 +125,7 @@ FROM Sotrudnik");
                 }
             }
         }
-        private void poiskIN(string familia)
+        private void PoiskIn(string familia)
         {
             //параметры подключения
             string sParamConnection = @" 
@@ -145,7 +133,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Фамилия, Имя, Отчество
 FROM Sotrudnik");
@@ -161,23 +149,23 @@ FROM Sotrudnik");
                 //условие
                 if (familia == fam)
                 {
-                    Namee = Convert.ToString(nam[0]);
-                    Otche = Convert.ToString(otche[0]);
+                    _namee = Convert.ToString(nam[0]);
+                    _otche = Convert.ToString(otche[0]);
                 }
             }
         }
-        string Namee, Otche;
+        string _namee, _otche;
         private void fineryDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //переменная для word
             var wordApp = new Word.Application();
             //word скрыт
             wordApp.Visible = false;
-            var COM = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
-            int pod = Convert.ToInt32(COM);
+            var com = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
+            int pod = Convert.ToInt32(com);
             DialogResult result;
-            result = MessageBox.Show(@"Проверьте доступ к интернету!", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            result = MessageBox.Show(@"Проверьте доступ к интернету!", @"Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
             {
                 //создание подключения
                 string sParamConnection = @" 
@@ -186,7 +174,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 connection.Open();
                 var myTbl = new DataTable();
                 //запрос
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 
 SELECT 
 Поздразделение, Автомобиль, [Гос.номер], Водитель,Главный_инкасатор,[Второй инкасатор],Инженер,Объект_обслуживания,id
@@ -209,19 +197,19 @@ FROM finery");
                     //поиск подразделения
                     if (pod==podr)
                    {
-                       var id_bankomat = id;
+                       var idBankomat = id;
                        var data = dateTimePicker1.Text;
-                       poiskIN(glaw);
-                       var glawn = glaw + " " + Namee + "." + Otche + ".";
-                       poiskIN(vtorou);
-                       var glawn1 = vtorou + " " + Namee + "." + Otche + ".";
-                       poiskIN(injener);
+                       PoiskIn(glaw);
+                       var glawn = glaw + " " + _namee + "." + _otche + ".";
+                       PoiskIn(vtorou);
+                       var glawn1 = vtorou + " " + _namee + "." + _otche + ".";
+                       PoiskIn(injener);
                         //задание переменных
-                       var injener1 = injener + " " + Namee + "." + Otche + ".";
+                      // var injener1 = injener + " " + _namee + "." + _otche + ".";
                        var auto1 = auto;
                        var numer = nomer;
-                       poiskIN(voditel);
-                       var voditel1 = voditel + " " + Namee + "." + Otche + ".";
+                       PoiskIn(voditel);
+                       var voditel1 = voditel + " " + _namee + "." + _otche + ".";
                        var objec = obj;
                        var podraz = Convert.ToString(podr);
                         //получение даты и времени
@@ -231,11 +219,11 @@ FROM finery");
                        //переменная для хранения нашего документа
                        var wordDocument = wordApp.Documents.Add(TemplateFileName);
                         //поиск переменных в файле и замены их на переменные из программного средства
-                       ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                       ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                        ReplaceWordsStub("{Date}", data, wordDocument);
                        ReplaceWordsStub("{podraz}", podraz, wordDocument);
                        ReplaceWordsStub("{glawn}", glawn, wordDocument);
-                       ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                       ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                        ReplaceWordsStub("{auto}", auto1, wordDocument);
                        ReplaceWordsStub("{numer}", numer, wordDocument);
                        ReplaceWordsStub("{voditel}", voditel1, wordDocument);
@@ -271,12 +259,12 @@ WHERE Поздразделение=" + "'" + podr + "'");
                        connection.Close();
                        Finery din = new Finery();
                        din.Show();
-                       this.Hide();
+                       Hide();
                        break;
                    }
                 }
             }
-            else if (result == System.Windows.Forms.DialogResult.No)
+            else if (result == DialogResult.No)
             {
             }
         }
@@ -285,7 +273,7 @@ WHERE Поздразделение=" + "'" + podr + "'");
             //возврат на главную форму
             Main form1 = new Main();
             form1.Show();
-            this.Hide();
+            Hide();
         }
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -308,11 +296,11 @@ AboutBox1 about = new AboutBox1();
             //word скрыт
             wordApp.Visible = false;
            // var COM = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
-            int pod = podrrrr;
+            int pod = Podrrrr;
 
             DialogResult result;
-            result = MessageBox.Show(@"Проверьте доступ к интернету!", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            result = MessageBox.Show(@"Проверьте доступ к интернету!", @"Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
             {
                 //создание подключения
                 string sParamConnection = @" 
@@ -321,7 +309,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 connection.Open();
                 var myTbl = new DataTable();
                 //запрос
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 
 SELECT 
 Поздразделение, Автомобиль, [Гос.номер], Водитель,Главный_инкасатор,[Второй инкасатор],Инженер,Объект_обслуживания,id
@@ -346,18 +334,18 @@ FROM finery");
                     {
                         if (injener != "")
                         {
-                            var id_bankomat = id;
+                            var idBankomat = id;
                             var data = dateTimePicker1.Text;
-                            poiskIN(glaw);
-                            var glawn = glaw + " " + Namee + "." + Otche + ".";
+                            PoiskIn(glaw);
+                            var glawn = glaw + " " + _namee + "." + _otche + ".";
 
-                            poiskIN(injener);
+                            PoiskIn(injener);
                             //задание переменных
-                            var injener1 = injener + " " + Namee + "." + Otche + ".";
+                            var injener1 = injener + " " + _namee + "." + _otche + ".";
                             var auto1 = auto;
                             var numer = nomer;
-                            poiskIN(voditel);
-                            var voditel1 = voditel + " " + Namee + "." + Otche + ".";
+                            PoiskIn(voditel);
+                            var voditel1 = voditel + " " + _namee + "." + _otche + ".";
                             var objec = obj;
                             var podraz = Convert.ToString(podr);
                             //получение даты и времени
@@ -367,7 +355,7 @@ FROM finery");
                             //переменная для хранения нашего документа
                             var wordDocument = wordApp.Documents.Add(TemplateFileName2);
                             //поиск переменных в файле и замены их на переменные из программного средства
-                            ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                            ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                             ReplaceWordsStub("{Date}", data, wordDocument);
                             ReplaceWordsStub("{podraz}", podraz, wordDocument);
                             ReplaceWordsStub("{glawn}", glawn, wordDocument);
@@ -407,24 +395,24 @@ WHERE Поздразделение=" + "'" + podr + "'");
                             connection.Close();
                             Finery din = new Finery();
                             din.Show();
-                            this.Hide();
+                            Hide();
                             break;
                         }
                         else if (vtorou != "")
                         {
-                            var id_bankomat = id;
+                            var idBankomat = id;
                             var data = dateTimePicker1.Text;
-                            poiskIN(glaw);
-                            var glawn = glaw + " " + Namee + "." + Otche + ".";
-                            poiskIN(vtorou);
-                            var glawn1 = vtorou + " " + Namee + "." + Otche + ".";
-                            poiskIN(injener);
+                            PoiskIn(glaw);
+                            var glawn = glaw + " " + _namee + "." + _otche + ".";
+                            PoiskIn(vtorou);
+                            var glawn1 = vtorou + " " + _namee + "." + _otche + ".";
+                            PoiskIn(injener);
                             //задание переменных
-                            var injener1 = injener + " " + Namee + "." + Otche + ".";
+                           // var injener1 = injener + " " + _namee + "." + _otche + ".";
                             var auto1 = auto;
                             var numer = nomer;
-                            poiskIN(voditel);
-                            var voditel1 = voditel + " " + Namee + "." + Otche + ".";
+                            PoiskIn(voditel);
+                            var voditel1 = voditel + " " + _namee + "." + _otche + ".";
                             var objec = obj;
                             var podraz = Convert.ToString(podr);
                             //получение даты и времени
@@ -434,7 +422,7 @@ WHERE Поздразделение=" + "'" + podr + "'");
                             //переменная для хранения нашего документа
                             var wordDocument = wordApp.Documents.Add(TemplateFileName);
                             //поиск переменных в файле и замены их на переменные из программного средства
-                            ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                            ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                             ReplaceWordsStub("{Date}", data, wordDocument);
                             ReplaceWordsStub("{podraz}", podraz, wordDocument);
                             ReplaceWordsStub("{glawn}", glawn, wordDocument);
@@ -474,14 +462,14 @@ WHERE Поздразделение=" + "'" + podr + "'");
                             connection.Close();
                             Finery din = new Finery();
                             din.Show();
-                            this.Hide();
+                            Hide();
                             break;
                         }
 
                     }
                 }
             }
-            else if (result == System.Windows.Forms.DialogResult.No)
+            else if (result == DialogResult.No)
             {
             }
         }
@@ -492,11 +480,11 @@ WHERE Поздразделение=" + "'" + podr + "'");
             var wordApp = new Word.Application();
             //word скрыт
             wordApp.Visible = false;
-            var COM = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
-            int pod = Convert.ToInt32(COM);
+            var com = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
+            int pod = Convert.ToInt32(com);
             DialogResult result;
-            result = MessageBox.Show(@"Проверьте доступ к интернету!", "Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            result = MessageBox.Show(@"Проверьте доступ к интернету!", @"Запрос!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
             {
                 //создание подключения
                 string sParamConnection = @" 
@@ -505,7 +493,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 connection.Open();
                 var myTbl = new DataTable();
                 //запрос
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 
 SELECT 
 Поздразделение, Автомобиль, [Гос.номер], Водитель,Главный_инкасатор,[Второй инкасатор],Инженер,Объект_обслуживания,id
@@ -530,18 +518,18 @@ FROM finery");
                     {
                         if (injener!="")
                         {
-                            var id_bankomat = id;
+                            var idBankomat = id;
                             var data = dateTimePicker1.Text;
-                            poiskIN(glaw);
-                            var glawn = glaw + " " + Namee + "." + Otche + ".";
+                            PoiskIn(glaw);
+                            var glawn = glaw + " " + _namee + "." + _otche + ".";
                             
-                            poiskIN(injener);
+                            PoiskIn(injener);
                             //задание переменных
-                            var injener1 = injener + " " + Namee + "." + Otche + ".";
+                            var injener1 = injener + " " + _namee + "." + _otche + ".";
                             var auto1 = auto;
                             var numer = nomer;
-                            poiskIN(voditel);
-                            var voditel1 = voditel + " " + Namee + "." + Otche + ".";
+                            PoiskIn(voditel);
+                            var voditel1 = voditel + " " + _namee + "." + _otche + ".";
                             var objec = obj;
                             var podraz = Convert.ToString(podr);
                             //получение даты и времени
@@ -551,7 +539,7 @@ FROM finery");
                             //переменная для хранения нашего документа
                             var wordDocument = wordApp.Documents.Add(TemplateFileName2);
                             //поиск переменных в файле и замены их на переменные из программного средства
-                            ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                            ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                             ReplaceWordsStub("{Date}", data, wordDocument);
                             ReplaceWordsStub("{podraz}", podraz, wordDocument);
                             ReplaceWordsStub("{glawn}", glawn, wordDocument);
@@ -591,24 +579,24 @@ WHERE Поздразделение=" + "'" + podr + "'");
                             connection.Close();
                             Finery din = new Finery();
                             din.Show();
-                            this.Hide();
+                            Hide();
                             break;
                         }
                         else if (vtorou != "")
                         {
-                            var id_bankomat = id;
+                            var idBankomat = id;
                             var data = dateTimePicker1.Text;
-                            poiskIN(glaw);
-                            var glawn = glaw + " " + Namee + "." + Otche + ".";
-                            poiskIN(vtorou);
-                            var glawn1 = vtorou + " " + Namee + "." + Otche + ".";
-                            poiskIN(injener);
+                            PoiskIn(glaw);
+                            var glawn = glaw + " " + _namee + "." + _otche + ".";
+                            PoiskIn(vtorou);
+                            var glawn1 = vtorou + " " + _namee + "." + _otche + ".";
+                            PoiskIn(injener);
                             //задание переменных
-                            var injener1 = injener + " " + Namee + "." + Otche + ".";
+                            //var injener1 = injener + " " + _namee + "." + _otche + ".";
                             var auto1 = auto;
                             var numer = nomer;
-                            poiskIN(voditel);
-                            var voditel1 = voditel + " " + Namee + "." + Otche + ".";
+                            PoiskIn(voditel);
+                            var voditel1 = voditel + " " + _namee + "." + _otche + ".";
                             var objec = obj;
                             var podraz = Convert.ToString(podr);
                             //получение даты и времени
@@ -618,7 +606,7 @@ WHERE Поздразделение=" + "'" + podr + "'");
                             //переменная для хранения нашего документа
                             var wordDocument = wordApp.Documents.Add(TemplateFileName);
                             //поиск переменных в файле и замены их на переменные из программного средства
-                            ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                            ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                             ReplaceWordsStub("{Date}", data, wordDocument);
                             ReplaceWordsStub("{podraz}", podraz, wordDocument);
                             ReplaceWordsStub("{glawn}", glawn, wordDocument);
@@ -658,23 +646,23 @@ WHERE Поздразделение=" + "'" + podr + "'");
                             connection.Close();
                             Finery din = new Finery();
                             din.Show();
-                            this.Hide();
+                            Hide();
                             break;
                         }
 
                     }
                 }
             }
-            else if (result == System.Windows.Forms.DialogResult.No)
+            else if (result == DialogResult.No)
             {
             }
         }
-        public int podrrrr;
+        public int Podrrrr;
         private void fineryDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var COM = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
-            int pod = Convert.ToInt32(COM);
-            podrrrr = pod;
+            var com = fineryDataGridView.Rows[e.RowIndex].Cells[0].Value;
+            int pod = Convert.ToInt32(com);
+            Podrrrr = pod;
         }
     }
 }

@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Logo : Form
     {
@@ -20,24 +13,17 @@ namespace GoogleAPIroutes_GMap
         [Flags]
         enum AnimateWindowFlags
         {
-            AW_HOR_POSITIVE = 0x00000001,
-            AW_HOR_NEGATIVE = 0x00000002,
-            AW_VER_POSITIVE = 0x00000004,
-            AW_VER_NEGATIVE = 0x00000008,
-            AW_CENTER = 0x00000010,
-            AW_HIDE = 0x00010000,
-            AW_ACTIVATE = 0x00020000,
-            AW_SLIDE = 0x00040000,
-            AW_BLEND = 0x00080000
+            AwHide = 0x00010000,
+            AwBlend = 0x00080000
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
         private void Logo_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.AllowTransparency = true;
-            this.BackColor = Color.AliceBlue;//цвет фона  
-            this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
+            FormBorderStyle = FormBorderStyle.None;
+            AllowTransparency = true;
+            BackColor = Color.AliceBlue;//цвет фона  
+            TransparencyKey = BackColor;//он же будет заменен на прозрачный цвет
             timer1.Start();
         }
         public int Value = 0;
@@ -51,26 +37,23 @@ namespace GoogleAPIroutes_GMap
             {
                 timer1.Stop();
                 Authorization aut = new Authorization();
-                this.Hide();
+                Hide();
                 aut.Show();
             }
         }
         private void Logo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+            AnimateWindow(Handle, 1000, AnimateWindowFlags.AwBlend | AnimateWindowFlags.AwHide);
         }
         private void Logo_FormClosed(object sender, FormClosedEventArgs e)
         {
-             AnimateWindow(this.Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+             AnimateWindow(Handle, 1000, AnimateWindowFlags.AwBlend | AnimateWindowFlags.AwHide);
         }
         public Authorization Authorizationcs
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
 
@@ -78,10 +61,7 @@ namespace GoogleAPIroutes_GMap
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
     }

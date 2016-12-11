@@ -257,11 +257,11 @@ namespace GoogleAPIroutes_GMap.Forms
         {
             if (list.Items.Count <= 0)
                 return;
-            String file = _pathLog + getPathLog(flag);
+            String file = _pathLog + GetPathLog(flag);
             try
             {
-                using (System.IO.StreamWriter fileStream =
-                new System.IO.StreamWriter(file, true, Encoding.GetEncoding(1251)))
+                using (StreamWriter fileStream =
+                new StreamWriter(file, true, Encoding.GetEncoding(1251)))
                 {
                     fileStream.WriteLine(list.Items[list.Items.Count - 1]);
                 }
@@ -272,14 +272,14 @@ namespace GoogleAPIroutes_GMap.Forms
             }
             if (!File.Exists(file))
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private String getPathLog(Boolean flag)
+        private String GetPathLog(Boolean flag)
         {
             return _dtLog.ToString("yyyy_MM_dd_HH_mm_ss_") + (flag ? "main" : "path") + ".log";
         }
-        private void loadForm()
+        private void LoadForm()
         {
             _dir = "";
             _pathIn = "";
@@ -289,13 +289,13 @@ namespace GoogleAPIroutes_GMap.Forms
             listBoxMain.Items.Clear();
             if (!File.Exists("Ionic.Zip.dll"))
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.ExitThread();
             }
 
-            if (!loadIni(fileIni))
+            if (!LoadIni(fileIni))
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
             }
             _pathIn = getPath(_pathIn);
@@ -303,19 +303,19 @@ namespace GoogleAPIroutes_GMap.Forms
             _pathLog = getPath(_pathLog);
             if (_dir == "")
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnDir.Visible = true;
             }
             if (!Directory.Exists(_pathIn))
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnIn.Visible = true;
             }
             if (!Directory.Exists(_pathOut))
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnOut.Visible = true;
             }
@@ -334,7 +334,7 @@ namespace GoogleAPIroutes_GMap.Forms
         {
             return str.Substring(str.IndexOf("=") + 1).Trim();
         }
-        private Boolean loadIni(String fileIni)
+        private Boolean LoadIni(String fileIni)
         {
             if (!File.Exists(fileIni))
                 return false;
@@ -371,7 +371,7 @@ namespace GoogleAPIroutes_GMap.Forms
         private void frmMain_Load(object sender, EventArgs e)
         {
             //загрузка формы
-            loadForm();
+            LoadForm();
         }
         private void оПрограммеToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -400,7 +400,7 @@ namespace GoogleAPIroutes_GMap.Forms
             //переход на главную форму
             Main form1 = new Main();
             form1.Show();
-            this.Hide();
+            Hide();
         }
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -415,40 +415,40 @@ namespace GoogleAPIroutes_GMap.Forms
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //редактирование
-            if (!loadIni(fileIni))
+            if (!LoadIni(fileIni))
             {
-                MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
             }
-            if (btnDir.Visible == true && btnIn.Visible == true && btnLog.Visible == true && btnOut.Visible == true)
+            if (btnDir.Visible && btnIn.Visible && btnLog.Visible && btnOut.Visible)
             {
                 btnDir.Visible = false;
                 btnIn.Visible = false;
                 btnLog.Visible = false;
                 btnOut.Visible = false;
             }
-            else if (btnDir.Visible == true)
+            else if (btnDir.Visible)
             {
                 btnDir.Visible = true;
                 btnIn.Visible = true;
                 btnLog.Visible = true;
                 btnOut.Visible = true;
             }
-            else if (btnIn.Visible == true)
+            else if (btnIn.Visible)
             {
                 btnDir.Visible = true;
                 btnIn.Visible = true;
                 btnLog.Visible = true;
                 btnOut.Visible = true;
             }
-            else if (btnOut.Visible == true)
+            else if (btnOut.Visible)
             {
                 btnDir.Visible = true;
                 btnIn.Visible = true;
                 btnLog.Visible = true;
                 btnOut.Visible = true;
             }
-            else if (btnLog.Visible == true)
+            else if (btnLog.Visible)
             {
                 btnDir.Visible = true;
                 btnIn.Visible = true;
@@ -466,31 +466,25 @@ namespace GoogleAPIroutes_GMap.Forms
         private void btnIn_Click(object sender, EventArgs e)
         {
             Process.Start("tools.ini");
-            DialogResult res = MessageBox.Show(@"Проверьте доступ к интернету!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult res = MessageBox.Show(@"Проверьте доступ к интернету!", @"Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
-                loadForm();
+                LoadForm();
                 butstart.Enabled = true;
             }
         }
-        internal AboutBox1 О_программе
+        internal AboutBox1 ОПрограмме
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
-        internal GoogleAPIroutes_GMap.Properties.Settings Settings
+        internal Properties.Settings Settings
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)

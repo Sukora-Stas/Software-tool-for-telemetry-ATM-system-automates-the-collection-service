@@ -21,14 +21,17 @@ namespace GoogleAPIroutes_GMap.Forms
                 PingReply reply = ping.Send(@"google.com");
                 status = reply.Status;
             }
-            catch { }
+            catch
+            {
+                // ignored
+            }
             if (status != IPStatus.Success)
             {
                 //проверка подключения к интернету
                 DialogResult result;
-                result = MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                result = MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
 
-                if (result == System.Windows.Forms.DialogResult.Retry)
+                if (result == DialogResult.Retry)
                 {
                     Search_Load(sender, e);
                 }
@@ -131,11 +134,11 @@ namespace GoogleAPIroutes_GMap.Forms
                     latitude = System.Xml.XmlConvert.ToDouble(node.SelectSingleNode("lat").InnerText.ToString());
                     longitude = System.Xml.XmlConvert.ToDouble(node.SelectSingleNode("lng").InnerText.ToString());
                 }
-                string formatted_address = xmldoc.SelectNodes("//formatted_address").Item(0).InnerText.ToString();
+                string formattedAddress = xmldoc.SelectNodes("//formatted_address").Item(0).InnerText.ToString();
                 //Массив, элементы которого содержат подстроки данного экземпляра, разделенные
                 //одним или более знаками из separator. Дополнительные сведения см. в разделе
                 //"Примечания".
-                string[] words = formatted_address.Split(',');
+                string[] words = formattedAddress.Split(',');
                 string dataMarker = string.Empty;
                 foreach (string word in words)
                 {
@@ -172,9 +175,9 @@ namespace GoogleAPIroutes_GMap.Forms
         }
         private void MarkerClick(object sender, EventArgs e)
         {
-            Admin admin = this.Owner as Admin;
+            Admin admin = Owner as Admin;
             admin.Tabpage(shir, dolg);
-            this.Close();
+            Close();
         }
      public   string shir, dolg;
         private void gMapControl1_MouseClick(object sender, MouseEventArgs e)

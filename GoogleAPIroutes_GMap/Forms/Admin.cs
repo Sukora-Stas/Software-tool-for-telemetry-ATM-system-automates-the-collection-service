@@ -2,6 +2,7 @@
 
 using System;
 using System.Windows.Forms;
+using GoogleAPIroutes_GMap.Reports;
 
 namespace GoogleAPIroutes_GMap.Forms
 {
@@ -869,7 +870,7 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётАвтопаркаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_autopark autopark = new otchet_autopark();
+            OtchetAutopark autopark = new OtchetAutopark();
             autopark.Show();
         }
     }

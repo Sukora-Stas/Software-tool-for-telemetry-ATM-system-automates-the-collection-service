@@ -858,7 +858,7 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётИнфокиосковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_infokiosk infotable = new otchet_infokiosk();
+            OtchetInfokiosk infotable = new OtchetInfokiosk();
             infotable.Show();
         }
 

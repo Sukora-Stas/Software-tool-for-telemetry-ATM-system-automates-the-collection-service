@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Reports
 {
-    public partial class otchet_infokiosk : Form
+    public partial class OtchetInfokiosk : Form
     {
-        public otchet_infokiosk()
+        public OtchetInfokiosk()
         {
             InitializeComponent();
         }
@@ -37,22 +30,11 @@ namespace GoogleAPIroutes_GMap
 
         private void назадToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
         }
-
-        private void infotableBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.infotableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-
-        }
-
         private void otchet_infokiosk_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.infotable". При необходимости она может быть перемещена или удалена.
-            this.infotableTableAdapter.Fill(this.inkasaciaDataSet.infotable);
-
+            infotableTableAdapter.Fill(inkasaciaDataSet.infotable);
         }
     }
 }

@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Registration : Form
     {
@@ -19,21 +13,17 @@ namespace GoogleAPIroutes_GMap
             InitializeComponent();
         }
 
-        public Authorization регистрация
+        public Authorization Регистрация
         {
             get
             {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
+                throw new NotImplementedException();
             }
         }
     
         Image logtxt = Properties.Resources.LogTextbox;
         Image logtxt_green = Properties.Resources.LogTextbox_GREEN;
         Image logtxt_red = Properties.Resources.LogTextbox_RED;
-        Image pastxt = Properties.Resources.PasTextbox;
         Image pastxt_green = Properties.Resources.PasTextbox_GREEN;
         Image pastxt_red = Properties.Resources.PasTextbox_RED;
         Image eye = Properties.Resources.eye;
@@ -41,15 +31,13 @@ namespace GoogleAPIroutes_GMap
         Boolean a = false;
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.LogPas". При необходимости она может быть перемещена или удалена.
-            this.logPasTableAdapter.Fill(this.inkasaciaDataSet.LogPas);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkas_V1DataSet.Authorization". При необходимости она может быть перемещена или удалена.
-            this.logPasBindingSource.AddNew();
+            logPasTableAdapter.Fill(inkasaciaDataSet.LogPas);
+            logPasBindingSource.AddNew();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             string q = фИОTextBox.Text;
-            connect();
+            Connect();
             if (a == false)
             {
                 DateTime now = DateTime.Now;
@@ -64,28 +52,22 @@ insert into LOG
 values  (" + "'" + "Регистрация" + "'" + "," + "'" + q + "'" + "," + "'" + now + "'" + "," + "'" + now.ToString("HH:mm:ss") + "'" + ")");
                 SqlDataAdapter adapter1 = new SqlDataAdapter(sQuery1, connection);
                 adapter1.Fill(myTbl1);
-                this.Validate();
-                this.logPasBindingSource.EndEdit();
-                this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                Validate();
+                logPasBindingSource.EndEdit();
+                tableAdapterManager.UpdateAll(inkasaciaDataSet);
                 button1.Visible = true;
                 button2.Visible = true;
-                MessageBox.Show("Пользователь " + q + " добавлен в БД","Регистрация выполнена");
+                MessageBox.Show(@"Пользователь " + q + @" добавлен в БД",@"Регистрация выполнена");
             }           
         }
-        private void logPasBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.logPasBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-        }
-        private void connect()
+        private void Connect()
         {
             string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Логин, Пароль 
 FROM LogPas");
@@ -97,7 +79,7 @@ FROM LogPas");
                 string log = Convert.ToString(dr.ItemArray[0]);
                 if (логинTextBox.Text == log)
                 {
-                    MessageBox.Show("Ошибка, данный логин уже занят");
+                    MessageBox.Show(@"Ошибка, данный логин уже занят");
                     a = true;
                     connection.Close();
                     break;
@@ -110,7 +92,7 @@ FROM LogPas");
         }
         private void регистрацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             Authorization aut = new Authorization();
             aut.Show();
         }
@@ -132,7 +114,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Логин, Пароль 
 FROM LogPas");
@@ -145,24 +127,24 @@ FROM LogPas");
                 if (логинTextBox.Text == "")
                 {
                     pictureBox2.Image = logtxt;
-                    логинTextBox.BackColor = System.Drawing.Color.FromArgb(251, 251, 251);
+                    логинTextBox.BackColor = Color.FromArgb(251, 251, 251);
                 }
                 else if (логинTextBox.Text == log)
                     {
                         pictureBox2.Image = logtxt_red;
-                        логинTextBox.BackColor = System.Drawing.Color.FromArgb(248, 236, 236);
+                        логинTextBox.BackColor = Color.FromArgb(248, 236, 236);
                       break;
                     }
                     else
                     {
                         pictureBox2.Image = logtxt_green;
-                        логинTextBox.BackColor = System.Drawing.Color.FromArgb(217, 244, 216);
+                        логинTextBox.BackColor = Color.FromArgb(217, 244, 216);
                     }
             }
         }
         private void button2_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             Authorization aut = new Authorization();
             aut.Show();
         }
@@ -171,14 +153,14 @@ FROM LogPas");
             if (парольTextBox.Text == "")
             {
                 pictureBox1.Image = pastxt_red;
-                парольTextBox.BackColor = System.Drawing.Color.FromArgb(248, 236, 236);
-                pictureBox3.BackColor = System.Drawing.Color.FromArgb(248, 236, 236);
+                парольTextBox.BackColor = Color.FromArgb(248, 236, 236);
+                pictureBox3.BackColor = Color.FromArgb(248, 236, 236);
             }
             else
             {
                 pictureBox1.Image = pastxt_green;
-                парольTextBox.BackColor = System.Drawing.Color.FromArgb(217, 244, 216);
-                pictureBox3.BackColor = System.Drawing.Color.FromArgb(217, 244, 216);
+                парольTextBox.BackColor = Color.FromArgb(217, 244, 216);
+                pictureBox3.BackColor = Color.FromArgb(217, 244, 216);
             }
         }
         private void справкаToolStripMenuItem_Click(object sender, EventArgs e)

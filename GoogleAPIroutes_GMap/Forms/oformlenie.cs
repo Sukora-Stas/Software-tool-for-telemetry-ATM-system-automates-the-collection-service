@@ -193,7 +193,7 @@ FROM Sotrudnik");
                 }
                 catch
                 {
-                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Ошибка создания!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
             }
                 try

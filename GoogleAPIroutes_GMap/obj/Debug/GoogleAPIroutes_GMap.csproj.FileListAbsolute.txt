@@ -97,7 +97,6 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_narad.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_RKC.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_sotrudniki.resources
-C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Registration.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Properties.Resources.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Search.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.csproj.GenerateResource.Cache
@@ -114,3 +113,4 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Logo.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Main.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Oformlenie.resources
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Registration.resources

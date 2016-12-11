@@ -11,31 +11,31 @@ using Ionic.Zip;
 
 namespace GoogleAPIroutes_GMap.Forms
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
         string fileIni = Environment.CurrentDirectory + @"\tools.ini";
         //системная библиотека для работы с атрибутами
         [DllImport("kernel32.dll")]
         private static extern int GetPrivateProfileSection(string lpAppName, byte[] lpszReturnBuffer, int nSize, string lpFileName);
         //задание нулевых путей
-        String dir = "";
-        String pathIn = "";
-        String pathOut = "";
-        String pathLog = "";
-        DateTime dtLog;
-        public frmMain()
+        String _dir = "";
+        String _pathIn = "";
+        String _pathOut = "";
+        String _pathLog = "";
+        DateTime _dtLog;
+        public FrmMain()
         {
             InitializeComponent();
         }
         private void butstart_Click(object sender, EventArgs e)
         {
-            startProgramm();
+            StartProgramm();
         }
         public int i = 0;
         public int n = 0;
         public int m = 0;
         public int j = 0;
-        private void startProgramm()
+        private void StartProgramm()
         {
             //подготовка форма и переменных
             i = 0;
@@ -43,7 +43,7 @@ namespace GoogleAPIroutes_GMap.Forms
             m = 0;
             j = 0;
             butstart.Enabled = false;
-            butstart.Text = "Обработка...";
+            butstart.Text = @"Обработка...";
             this.Cursor = Cursors.WaitCursor;
             txtDir.Enabled = false;
             txtIn.Enabled = false;
@@ -56,7 +56,7 @@ namespace GoogleAPIroutes_GMap.Forms
             //очистка меню
             listBoxMain.Items.Clear();
             listBoxDir.Items.Clear();
-            dtLog = DateTime.Now;
+            _dtLog = DateTime.Now;
             //получение даты и поздних дат
             DateTime localDate = DateTime.Now;
             int now = localDate.Year;
@@ -66,67 +66,66 @@ namespace GoogleAPIroutes_GMap.Forms
             DateTime dtb, dte;
             ZipFile zf;
             String archive;
-            caption(pathIn);
+            Caption();
             //первая отрисовка на меню
             listBoxMain.Items.Add("Start... ");
-            selectedMain();
+            SelectedMain();
             listBoxMain.Items.Add("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            selectedMain();
-            listBoxMain.Items.Add("                     Стартовая директория: " + pathIn);
+            SelectedMain();
+            listBoxMain.Items.Add("                     Стартовая директория: " + _pathIn);
             //запись в log файл
-            selectedMain();
+            SelectedMain();
             try
             {
-                foreach (string pathDir in Directory.GetDirectories(pathIn))
+                foreach (string pathDir in Directory.GetDirectories(_pathIn))
                 {
                     DateTime dt = Directory.GetCreationTime(pathDir);
                     //получение даты из атрибута
-                    archive = dt.ToString("yyyy") + pathDir.Substring(pathIn.Length);
+                    archive = dt.ToString("yyyy") + pathDir.Substring(_pathIn.Length);
                     Boolean flag = DateTime.TryParseExact(archive, "yyyyddMM", CultureInfo.InvariantCulture, DateTimeStyles.None, out dtPath);
                     if (flag)
                     {
                         listBoxMain.Items.Add("<---- Директория для поиска:  " + pathDir + "  ---->");
-                        selectedMain();
+                        SelectedMain();
                         // удаляем
-                        pathDelete(pathDir);
+                        PathDelete(pathDir);
                         if (dt.Year == now)
                         {
                         }
                         else if (dt.Year == last)
                         {
                             listBoxMain.Items.Add("<==========================================================================>");
-                            selectedMain();
+                            SelectedMain();
                             listBoxMain.Items.Add("Архивация директории: " + pathDir);
-                            selectedMain();
+                            SelectedMain();
                             // архиввация
                             dtb = DateTime.Now;
-                            zf = new ZipFile();
-                            zf.AlternateEncoding = Encoding.GetEncoding("cp866");
+                            zf = new ZipFile {AlternateEncoding = Encoding.GetEncoding("cp866")};
                             zf.AddDirectory(pathDir);//Добавляем папку
                             listBoxMain.Items.Add("Подождите... ");
-                            selectedMain();
-                            zf.Save(pathOut + @"\" + archive + ".zip"); //Сохраняем архив
+                            SelectedMain();
+                            zf.Save(_pathOut + @"\" + archive + ".zip"); //Сохраняем архив
                             dte = DateTime.Now;
                             listBoxMain.Items.Add("Директоря заархивирована");
-                            selectedMain();
+                            SelectedMain();
                             listBoxMain.Items.Add("Затрачено времени: " + (dte - dtb).ToString());
-                            selectedMain();
+                            SelectedMain();
                             m++;
                             toolStripStatusLabel1.Visible = true;
-                            toolStripStatusLabel1.Text = "Создано архивов: " + m;
+                            toolStripStatusLabel1.Text = @"Создано архивов: " + m;
                             statusStrip1.Refresh();
                             // delete
                             listBoxMain.Items.Add("Удаляем обработанную директорию: " + pathDir);
-                            selectedMain();
+                            SelectedMain();
                             Directory.Delete(pathDir, true);
                             // info
                             listBoxMain.Items.Add("Удалена заархивированная директория: ");
-                            selectedMain();
+                            SelectedMain();
                             listBoxMain.Items.Add("<==========================================================================>");
-                            selectedMain();
+                            SelectedMain();
                             j++;
                             toolStripStatusLabel2.Visible = true;
-                            toolStripStatusLabel2.Text = "Удалено: " + j;
+                            toolStripStatusLabel2.Text = @"Удалено: " + j;
                             statusStrip1.Refresh();
                         }
                         else if (dt.Year <= lastlast)
@@ -136,24 +135,24 @@ namespace GoogleAPIroutes_GMap.Forms
                             listBoxMain.Items.Add("<==========================================================================>");
                             listBoxMain.Items.Add("Удаление директории: " + pathDir);
                             listBoxMain.Items.Add("Дата создания: " + dt);
-                            selectedMain();
+                            SelectedMain();
                             Directory.Delete(pathDir, true);
                             listBoxMain.Items.Add("Удаление завершено! ");
-                            selectedMain();
+                            SelectedMain();
                             toolStripStatusLabel2.Visible = true;
-                            toolStripStatusLabel2.Text = "Удалено: " + j;
+                            toolStripStatusLabel2.Text = @"Удалено: " + j;
                             statusStrip1.Refresh();
                         }
                     }
                     else
                     {
                         listBoxMain.Items.Add("Директория исключена из просмотра: " + pathDir);
-                        selectedMain();
+                        SelectedMain();
                         listBoxMain.Items.Add("Дата создания: " + dt);
-                        selectedMain();
+                        SelectedMain();
                         listBoxMain.Items.Add("<==========================================================================>");
-                        selectedMain();
-                        caption(pathDir);
+                        SelectedMain();
+                        Caption();
                     }
                 }
             }
@@ -161,69 +160,69 @@ namespace GoogleAPIroutes_GMap.Forms
             {
                 MessageBox.Show(ex.Message);
             }
-            this.Cursor = Cursors.Default;
-            butstart.Text = "Запуск";
+            Cursor = Cursors.Default;
+            butstart.Text = @"Запуск";
             butstart.Enabled = true;
             listBoxMain.Items.Add("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            selectedMain();
+            SelectedMain();
             listBoxMain.Items.Add("=Finish!=");
-            selectedMain();
-            MessageBox.Show(@"Проверьте доступ к интернету!", "Работа завершена!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SelectedMain();
+            MessageBox.Show(@"Проверьте доступ к интернету!", @"Работа завершена!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void selectedMain()
+        private void SelectedMain()
         {
             //запись в log файл
             listBoxMain.SelectedIndex = listBoxMain.Items.Count - 1;
             listBoxMain.Refresh();
         }
-        private void selectedDir()
+        private void SelectedDir()
         {
             //вывод в меню
             listBoxDir.SelectedIndex = listBoxDir.Items.Count - 1;
             listBoxDir.Refresh();
         }
-        void caption(String pathDir)
+        void Caption()
         {
             //икнремент
             i++;
-            caption2(pathDir);
+            Caption2();
         }
 
-        void caption2(String pathDir)
+        void Caption2()
         {
             //статус
-            toolStripStatusObr.Text = "Папок найдено: " + n;
-            toolStripStatusFind.Text = "Папок обработанно: " + i;
+            toolStripStatusObr.Text = @"Папок найдено: " + n;
+            toolStripStatusFind.Text = @"Папок обработанно: " + i;
             statusStrip1.Refresh();
         }
-        void pathDelete(String pathDir)
+        void PathDelete(String pathDir)
         {
             //процедура удаления директорий
             foreach (string pathNew in Directory.GetDirectories(pathDir))
             {
-                caption(pathNew);
+                Caption();
                 listBoxDir.Items.Add(pathNew);
-                selectedDir();
-                if (pathNew.Substring(pathDir.Length + 1).ToUpper() == dir)
+                SelectedDir();
+                if (pathNew.Substring(pathDir.Length + 1).ToUpper() == _dir)
                 {
                     try
                     {
                         // delete
                         DateTime dt = Directory.GetCreationTime(pathNew);
-                        string archive_name = new DirectoryInfo(pathNew).Name;
-                        if (dt.Year == dtLog.Year)
+                        string archiveName = new DirectoryInfo(pathNew).Name;
+                        if (dt.Year == _dtLog.Year)
                         {
-                            listBoxMain.Items.Add("Директория " + archive_name + " подлежит удалению");
-                            selectedMain();
+                            listBoxMain.Items.Add("Директория " + archiveName + " подлежит удалению");
+                            SelectedMain();
                             listBoxMain.Items.Add("Путь: " + pathNew);
-                            selectedMain();
+                            SelectedMain();
                             listBoxMain.Items.Add("Подождите....");
-                            selectedMain();
+                            SelectedMain();
                             Directory.Delete(pathNew, true);
                             listBoxMain.Items.Add("Готово!");
-                            selectedMain();
+                            SelectedMain();
                             listBoxMain.Items.Add("<==========================================================================>");
-                            selectedMain();
+                            SelectedMain();
                             j++;
                             n++;
                         }
@@ -232,33 +231,33 @@ namespace GoogleAPIroutes_GMap.Forms
                             Directory.Delete(pathNew, true);
                             // info
                             listBoxMain.Items.Add("Удалена директория: " + pathNew);
-                            selectedMain();
+                            SelectedMain();
                             toolStripStatusLabel2.Visible = true;
-                            toolStripStatusLabel2.Text = "Удалено: " + j;
+                            toolStripStatusLabel2.Text = @"Удалено: " + j;
                             statusStrip1.Refresh();
                             j++;
                             n++;
-                            caption2(pathNew);
+                            Caption2();
                         }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                         listBoxMain.Items.Add("ERROR:" + ex.Message);
-                        selectedMain();
+                        SelectedMain();
                         listBoxMain.Items.Add("Ошибка удаления директории: " + pathNew);
-                        selectedMain();
+                        SelectedMain();
                     }
                 }
                 else
-                    pathDelete(pathNew);
+                    PathDelete(pathNew);
             }
         }
-        private void writeFile(ListBox list, Boolean flag)
+        private void WriteFile(ListBox list, Boolean flag)
         {
             if (list.Items.Count <= 0)
                 return;
-            String file = pathLog + getPathLog(flag);
+            String file = _pathLog + getPathLog(flag);
             try
             {
                 using (System.IO.StreamWriter fileStream =
@@ -278,14 +277,14 @@ namespace GoogleAPIroutes_GMap.Forms
         }
         private String getPathLog(Boolean flag)
         {
-            return dtLog.ToString("yyyy_MM_dd_HH_mm_ss_") + (flag ? "main" : "path") + ".log";
+            return _dtLog.ToString("yyyy_MM_dd_HH_mm_ss_") + (flag ? "main" : "path") + ".log";
         }
         private void loadForm()
         {
-            dir = "";
-            pathIn = "";
-            pathOut = "";
-            pathLog = "";
+            _dir = "";
+            _pathIn = "";
+            _pathOut = "";
+            _pathLog = "";
             listBoxDir.Items.Clear();
             listBoxMain.Items.Clear();
             if (!File.Exists("Ionic.Zip.dll"))
@@ -299,22 +298,22 @@ namespace GoogleAPIroutes_GMap.Forms
                 MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
             }
-            pathIn = getPath(pathIn);
-            pathOut = getPath(pathOut);
-            pathLog = getPath(pathLog);
-            if (dir == "")
+            _pathIn = getPath(_pathIn);
+            _pathOut = getPath(_pathOut);
+            _pathLog = getPath(_pathLog);
+            if (_dir == "")
             {
                 MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnDir.Visible = true;
             }
-            if (!Directory.Exists(pathIn))
+            if (!Directory.Exists(_pathIn))
             {
                 MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
                 btnIn.Visible = true;
             }
-            if (!Directory.Exists(pathOut))
+            if (!Directory.Exists(_pathOut))
             {
                 MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 butstart.Enabled = false;
@@ -346,25 +345,25 @@ namespace GoogleAPIroutes_GMap.Forms
             foreach (String entry in tmp)
                 if (getValue(entry) != "")
                 {
-                    if (getName(entry).ToLower() == "dir".ToLower() && dir == "")
+                    if (getName(entry).ToLower() == "dir".ToLower() && _dir == "")
                     {
-                        dir = getValue(entry).ToUpper();
-                        txtDir.Text = dir;
+                        _dir = getValue(entry).ToUpper();
+                        txtDir.Text = _dir;
                     }
-                    if (getName(entry).ToLower() == "pathIn".ToLower() && pathIn == "")
+                    if (getName(entry).ToLower() == "pathIn".ToLower() && _pathIn == "")
                     {
-                        pathIn = getValue(entry);
-                        txtIn.Text = pathIn;
+                        _pathIn = getValue(entry);
+                        txtIn.Text = _pathIn;
                     }
-                    if (getName(entry).ToLower() == "pathOut".ToLower() && pathOut == "")
+                    if (getName(entry).ToLower() == "pathOut".ToLower() && _pathOut == "")
                     {
-                        pathOut = getValue(entry);
-                        txtOut.Text = pathOut;
+                        _pathOut = getValue(entry);
+                        txtOut.Text = _pathOut;
                     }
-                    if (getName(entry).ToLower() == "pathLog".ToLower() && pathLog == "")
+                    if (getName(entry).ToLower() == "pathLog".ToLower() && _pathLog == "")
                     {
-                        pathLog = getValue(entry);
-                        txtLog.Text = pathLog;
+                        _pathLog = getValue(entry);
+                        txtLog.Text = _pathLog;
                     }
                 }
             return true;
@@ -406,12 +405,12 @@ namespace GoogleAPIroutes_GMap.Forms
         private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             //запись в файл
-            writeFile(sender as ListBox, true);
+            WriteFile(sender as ListBox, true);
         }
         private void listBoxDir_SelectedIndexChanged(object sender, EventArgs e)
         {
             //запись в файл
-            writeFile(sender as ListBox, false);
+            WriteFile(sender as ListBox, false);
         }
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {

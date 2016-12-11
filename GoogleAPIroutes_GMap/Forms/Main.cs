@@ -1237,7 +1237,7 @@ FROM infotable");
             }
             private void рекурсивнаяОбработкаToolStripMenuItem_Click(object sender, EventArgs e)
             {
-                frmMain frmain = new frmMain();
+                FrmMain frmain = new FrmMain();
                 frmain.Show();
                 Hide();
             }
@@ -1311,7 +1311,7 @@ FROM infotable");
                 }
             }
 
-            public frmMain Рекурсия
+            public FrmMain Рекурсия
             {
                 get
                 {

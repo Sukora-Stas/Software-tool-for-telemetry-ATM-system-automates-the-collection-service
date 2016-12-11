@@ -840,7 +840,7 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётБанкоматовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_bankomati bankomati = new otchet_bankomati();
+            OtchetBankomati bankomati = new OtchetBankomati();
             bankomati.Show();
         }
 

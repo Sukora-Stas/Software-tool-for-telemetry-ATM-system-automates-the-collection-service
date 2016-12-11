@@ -1,6 +1,6 @@
-﻿namespace GoogleAPIroutes_GMap
+﻿namespace GoogleAPIroutes_GMap.Reports
 {
-    partial class otchet_bankomati
+    partial class OtchetBankomati
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(otchet_bankomati));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OtchetBankomati));
             this.inkasaciaDataSet = new GoogleAPIroutes_GMap.InkasaciaDataSet();
             this.bankomatBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bankomatTableAdapter = new GoogleAPIroutes_GMap.InkasaciaDataSetTableAdapters.BankomatTableAdapter();
@@ -186,7 +186,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "otchet_bankomati";
+            this.Name = "OtchetBankomati";
             this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список банкоматов";

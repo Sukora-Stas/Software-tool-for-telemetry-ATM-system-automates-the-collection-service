@@ -1,36 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Reports
 {
-    public partial class otchet_bankomati : Form
+    public partial class OtchetBankomati : Form
     {
-        public otchet_bankomati()
+        public OtchetBankomati()
         {
             InitializeComponent();
         }
-
-        private void bankomatBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bankomatBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-
-        }
-
         private void otchet_bankomati_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Bankomat". При необходимости она может быть перемещена или удалена.
-            this.bankomatTableAdapter.Fill(this.inkasaciaDataSet.Bankomat);
-
+            bankomatTableAdapter.Fill(inkasaciaDataSet.Bankomat);
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,7 +34,7 @@ namespace GoogleAPIroutes_GMap
 
         private void назадToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
         }
     }
 }

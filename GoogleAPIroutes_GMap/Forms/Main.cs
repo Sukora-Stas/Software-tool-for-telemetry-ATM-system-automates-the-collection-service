@@ -406,10 +406,6 @@ FROM Bankomat");
                         //  вызов прцедуры создания меток
                         bankomat_metka_creat(shirina, dolgota, adres);
                     }
-                    //else if (comboBox1.Text != citi)
-                    //{
-                    //    bankomati_creat();
-                    //}
                 }
             }
         }
@@ -964,9 +960,9 @@ WHERE ID =" + "'" + id + "'");
                      oformlenie.главный_инкасаторTextBox.Text = familia;
                      oformlenie.второй_инкасаторTextBox.Text = familia1;
                      oformlenie.объект_обслуживанияTextBox.Text = @"Банкомат № " + _idBankomat + @" Адрес: " + _adresss + @" " + _citii;
-                     oformlenie.id = _idBankomat;
+                     oformlenie.Id = _idBankomat;
                      oformlenie.textBox1.Text = Convert.ToString(_random);
-                     oformlenie.save();
+                     oformlenie.Save();
                  }
             }
                  if(_random == 2)
@@ -987,9 +983,9 @@ WHERE ID =" + "'" + id + "'");
                         oformlenie.главный_инкасаторTextBox.Text = familia;
                         oformlenie.инженерTextBox.Text = familiaJ;
                         oformlenie.объект_обслуживанияTextBox.Text = @"Банкомат № " + _idBankomat + @" Адрес: " + _adresss + @" " + _citii;
-                        oformlenie.id = _idBankomat;
+                        oformlenie.Id = _idBankomat;
                         oformlenie.textBox1.Text = Convert.ToString(_random);
-                        oformlenie.save();
+                        oformlenie.Save();
                     }
                 }
         }

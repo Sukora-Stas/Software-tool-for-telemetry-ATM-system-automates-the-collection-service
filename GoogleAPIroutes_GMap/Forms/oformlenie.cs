@@ -3,10 +3,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows.Forms;
-using GoogleAPIroutes_GMap.Forms;
+using DataTable = System.Data.DataTable;
 using Word = Microsoft.Office.Interop.Word;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Oformlenie : Form
     {
@@ -14,16 +14,10 @@ namespace GoogleAPIroutes_GMap
         {
             InitializeComponent();
         }
-        private void fineryBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.fineryBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-        }
         public void oform_load()
         {
-            this.fineryTableAdapter.Fill(this.inkasaciaDataSet.finery);
-            this.fineryBindingSource.AddNew();
+            fineryTableAdapter.Fill(inkasaciaDataSet.finery);
+            fineryBindingSource.AddNew();
         }
         int _m;
         private void Randomchik()
@@ -39,7 +33,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Поздразделение
 FROM finery");
@@ -57,13 +51,13 @@ FROM finery");
         }
         private void oformlenie_Load(object sender, EventArgs e)
         {
-            this.fineryTableAdapter.Fill(this.inkasaciaDataSet.finery);
-            this.fineryBindingSource.AddNew();
+            fineryTableAdapter.Fill(inkasaciaDataSet.finery);
+            fineryBindingSource.AddNew();
             завершёнCheckBox.Checked = false;
             Randomchik();
             поздразделениеTextBox.Text = Convert.ToString(_m);
         }
-        public string id;
+        public string Id;
         private string TemplateFileName = @"D:\Преддипломная практика\Diplom\GoogleAPIroutes_GMap\inkass.docx";//путь к файлу
         private string TemplateFileName2 = @"D:\Преддипломная практика\Diplom\GoogleAPIroutes_GMap\injener.docx";//путь к файлу
 
@@ -80,7 +74,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 SqlConnection connection = new SqlConnection(sParamConnection);
                 connection.Open();
                 var myTbl = new DataTable();
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 SELECT 
 Фамилия, Имя, Отчество
 FROM Sotrudnik");
@@ -100,12 +94,12 @@ FROM Sotrudnik");
                 }
             }
         string _name,_otche;
-        public void save()
+        public void Save()
         {
             DateTime now = DateTime.Now;
             dateTimePicker1.Text = Convert.ToString(now, CultureInfo.InvariantCulture);
             dateTimePicker1.MinDate = DateTime.Now;
-            var id_bankomat = id;
+            var idBankomat = Id;
             var data = dateTimePicker1.Text;
             PoiskIn(главный_инкасаторTextBox.Text);
             var glawn = главный_инкасаторTextBox.Text + " " + _name + "." + _otche + ".";
@@ -121,16 +115,16 @@ FROM Sotrudnik");
             var podraz = поздразделениеTextBox.Text;
             var wordApp = new Word.Application();//переменная для word
             wordApp.Visible = false;//word скрыт
-            if (textBox1.Text == "1")
+            if (textBox1.Text == @"1")
             {
                 try
                 {
                     var wordDocument = wordApp.Documents.Add(TemplateFileName);//переменная для хранения нашего документа
-                    ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                    ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                     ReplaceWordsStub("{Date}", data, wordDocument);
                     ReplaceWordsStub("{podraz}", podraz, wordDocument);
                     ReplaceWordsStub("{glawn}", glawn, wordDocument);
-                    ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                    ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                     ReplaceWordsStub("{auto}", auto, wordDocument);
                     ReplaceWordsStub("{numer}", numer, wordDocument);
                     ReplaceWordsStub("{voditel}", voditel, wordDocument);
@@ -144,21 +138,21 @@ FROM Sotrudnik");
                 }
                 catch
                 {
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
             }
-            if (textBox1.Text == "2")
+            if (textBox1.Text == @"2")
             {
                 try
                 {
                     randomchik_sis_oshibka();
-                    var ochibka = random;
+                    var ochibka = _random;
                     var wordDocument = wordApp.Documents.Add(TemplateFileName2);//переменная для хранения нашего документа
-                    ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                    ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                     ReplaceWordsStub("{Date}", data, wordDocument);
                     ReplaceWordsStub("{podraz}", podraz, wordDocument);
                     ReplaceWordsStub("{glawn}", glawn, wordDocument);
-                    ReplaceWordsStub("{ID_bankomat}", id_bankomat, wordDocument);
+                    ReplaceWordsStub("{ID_bankomat}", idBankomat, wordDocument);
                     ReplaceWordsStub("{auto}", auto, wordDocument);
                     ReplaceWordsStub("{numer}", numer, wordDocument);
                     ReplaceWordsStub("{voditel}", voditel, wordDocument);
@@ -199,31 +193,28 @@ FROM Sotrudnik");
                 }
                 catch
                 {
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
             }
                 try
                 {
-                    this.Validate();
-                    this.fineryBindingSource.EndEdit();
-                    this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
+                    Validate();
+                    fineryBindingSource.EndEdit();
+                    tableAdapterManager.UpdateAll(inkasaciaDataSet);
                 }
                 catch
                 {
-                    MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
+                    MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);//окно ошибки
                 }
                 Main form1 = new Main();
                 form1.Owner = this;
-                this.Hide();
+                Hide();
         }
-        int random;
+        int _random;
         private void randomchik_sis_oshibka()
         {
             Random rnd = new Random();
-            random = rnd.Next(1, 6); ;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
+            _random = rnd.Next(1, 6); 
         }
     }
 }

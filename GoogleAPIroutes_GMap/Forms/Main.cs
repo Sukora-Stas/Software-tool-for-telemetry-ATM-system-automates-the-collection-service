@@ -2,18 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Data.SqlClient;
-//директива для работы с картами
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using GMap.NET.WindowsForms;
-using GoogleAPIroutes_GMap.Forms;
-using Authorization = GoogleAPIroutes_GMap.Forms.Authorization;
+//директива для работы с картами
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Forms
 {
     public partial class Main : Form
     {

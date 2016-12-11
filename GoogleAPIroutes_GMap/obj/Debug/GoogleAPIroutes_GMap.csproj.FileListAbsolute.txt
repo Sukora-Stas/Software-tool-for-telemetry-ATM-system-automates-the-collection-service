@@ -105,7 +105,6 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\Software tool for telemetry ATM system.exe.config
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\Software tool for telemetry ATM system.exe
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\Software tool for telemetry ATM system.pdb
-C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Main.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\Software tool for telemetry ATM system.exe
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\Software tool for telemetry ATM system.pdb
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.AboutBox1.resources
@@ -114,3 +113,4 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Finery.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.frmMain.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Logo.resources
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Main.resources

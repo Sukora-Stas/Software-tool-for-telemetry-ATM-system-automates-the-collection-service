@@ -24,8 +24,8 @@ namespace GoogleAPIroutes_GMap.Forms
         //флаги для красивого закрытия формы
         enum AnimateWindowFlags
         {
-            AW_HIDE = 0x00010000,
-            AW_BLEND = 0x00080000
+            AwHide = 0x00010000,
+            AwBlend = 0x00080000
         }
         [DllImport("user32.dll")]
         static extern bool AnimateWindow(IntPtr hWnd, int time, AnimateWindowFlags flags);
@@ -47,7 +47,7 @@ namespace GoogleAPIroutes_GMap.Forms
             if (status != IPStatus.Success)
             {
                 DialogResult result;
-                result = MessageBox.Show("Проверьте доступ к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                result = MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
                 //повторное подключение
                 if (result == DialogResult.Retry)
                 {
@@ -144,9 +144,9 @@ namespace GoogleAPIroutes_GMap.Forms
                     latEnd = System.Xml.XmlConvert.ToDouble(xmldoc.GetElementsByTagName("end_location")[nodes.Count].ChildNodes[0].InnerText);
                     lngEnd = System.Xml.XmlConvert.ToDouble(xmldoc.GetElementsByTagName("end_location")[nodes.Count].ChildNodes[1].InnerText);
                     //Выводим в текстовое поле координаты начала пути.
-                    textBox5.Text = "Широта - "+latStart + ", Долгота - " + lngStart;
+                    textBox5.Text = @"Широта - "+latStart + @", Долгота - " + lngStart;
                     //Выводим в текстовое поле координаты конечной точки.
-                    textBox6.Text = "Широта - " + latEnd + ", Долгота - " + lngEnd;
+                    textBox6.Text = @"Широта - " + latEnd + @", Долгота - " + lngEnd;
                     //Устанавливаем заполненную таблицу в качестве источника.
                     dataGridView1.DataSource = _dtRouter;
                     //Устанавливаем позицию карты на начало пути.
@@ -241,42 +241,42 @@ namespace GoogleAPIroutes_GMap.Forms
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (textBox7.Text == "Беларусь" && comboBox1.Text == "Минск")
+            if (textBox7.Text == @"Беларусь" && comboBox1.Text == @"Минск")
             {
                 //наведение на выбранную терретироию
                 gMapControl1.Position = new GMap.NET.PointLatLng(53.902257, 27.561831);
                 gMapControl1.Zoom = 11;
                 comboBox2_SelectedIndexChanged(sender, e);
             }
-            else if (textBox7.Text == "Беларусь" && comboBox1.Text == "Могилёв")
+            else if (textBox7.Text == @"Беларусь" && comboBox1.Text == @"Могилёв")
             {
                 //наведение на выбранную терретироию
                 gMapControl1.Position = new GMap.NET.PointLatLng(53.894617, 30.331014);
                 gMapControl1.Zoom = 12;
                 comboBox2_SelectedIndexChanged(sender, e);
             }
-            else if (textBox7.Text == "Беларусь" && comboBox1.Text == "Гомель")
+            else if (textBox7.Text == @"Беларусь" && comboBox1.Text == @"Гомель")
             {
                 //наведение на выбранную терретироию
                 gMapControl1.Position = new GMap.NET.PointLatLng(52.42416, 31.014272);
                 gMapControl1.Zoom = 12;
                 comboBox2_SelectedIndexChanged(sender, e);
             }
-            else if (textBox7.Text == "Беларусь" && comboBox1.Text == "Брест")
+            else if (textBox7.Text == @"Беларусь" && comboBox1.Text == @"Брест")
             {
                 //наведение на выбранную терретироию
                 gMapControl1.Position = new GMap.NET.PointLatLng(52.08951, 23.71202);
                 gMapControl1.Zoom = 12;
                 comboBox2_SelectedIndexChanged(sender, e);
             }
-            else if (textBox7.Text == "Беларусь" && comboBox1.Text == "Гродно")
+            else if (textBox7.Text == @"Беларусь" && comboBox1.Text == @"Гродно")
             {
                 //наведение на выбранную терретироию
                 gMapControl1.Position = new GMap.NET.PointLatLng(53.678122, 23.829807);
                 gMapControl1.Zoom = 12;
                 comboBox2_SelectedIndexChanged(sender, e);
             }
-            else if (textBox7.Text == "Беларусь" && comboBox1.Text == "Витебск")
+            else if (textBox7.Text == @"Беларусь" && comboBox1.Text == @"Витебск")
             {
                 //наведение на выбранную терретироию
                 gMapControl1.Position = new GMap.NET.PointLatLng(55.192672, 30.206337);
@@ -368,13 +368,6 @@ namespace GoogleAPIroutes_GMap.Forms
             dataGridView1.ReadOnly = false;
             gMapControl1.Position = new GMap.NET.PointLatLng(53.902257, 27.561831);
             gMapControl1.Zoom = 11;
-            //создание переменных городов
-            var Minsk = new GMap.NET.PointLatLng(53.902257, 27.561831);
-            var Mogilev = new GMap.NET.PointLatLng(53.902257, 27.561831);
-            var Gomel = new GMap.NET.PointLatLng(53.902257, 27.561831);
-            var Brest = new GMap.NET.PointLatLng(53.902257, 27.561831);
-            var Grodno = new GMap.NET.PointLatLng(53.902257, 27.561831);
-            var Vitebsk = new GMap.NET.PointLatLng(53.902257, 27.561831);
             //создание меток банкомата
             bankomati_creat();
         }
@@ -383,7 +376,7 @@ namespace GoogleAPIroutes_GMap.Forms
             //очистка карты
             gMapControl1.Overlays.Clear();      
             i = 1;
-            if (comboBox2.Text == "Банкоматы")
+            if (comboBox2.Text == @"Банкоматы")
             {
                 //подключение
                 string sParamConnection = @" 
@@ -392,7 +385,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 connection.Open();
                 var myTbl = new DataTable();
                 //запрос
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 SELECT 
 Ширина, Долгота, Адрес, Город, Банкомат_ID
 FROM Bankomat");
@@ -523,7 +516,7 @@ FROM Bankomat");
             }
             private void Form1_FormClosing(object sender, FormClosingEventArgs e)
             {
-                AnimateWindow(Handle, 1000, AnimateWindowFlags.AW_BLEND | AnimateWindowFlags.AW_HIDE);
+                AnimateWindow(Handle, 1000, AnimateWindowFlags.AwBlend | AnimateWindowFlags.AwHide);
             }
             int _bankomatSum1 = 1;
             int _infotableSum1 = 1;

@@ -448,7 +448,7 @@ FROM Bankomat");
                     new Point(
                         -Size.Width / 2,
                         -Size.Height / 2);
-                this._image = image;
+                _image = image;
             }
             public override void OnRender(Graphics g)
             {
@@ -518,20 +518,20 @@ FROM Bankomat");
             {
                 AnimateWindow(Handle, 1000, AnimateWindowFlags.AwBlend | AnimateWindowFlags.AwHide);
             }
-            int _bankomatSum1 = 1;
-            int _infotableSum1 = 1;
-            int _rkcSum1 = 1;
-            int _bankSum1 = 1;
+            public int BankomatSum1 = 1;
+            public int InfotableSum1 = 1;
+            public int RkcSum1 = 1;
+            public int BankSum1 = 1;
             private void bankomat_sum()
             {
-                _bankomatSum1 = 1;
+                BankomatSum1 = 1;
                 //параметры подключения
                  string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                     SqlConnection connection = new SqlConnection(sParamConnection);
                     connection.Open();
                     var myTbl = new DataTable();
-                    string sQuery = string.Format(@" 
+                    string sQuery = (@" 
 SELECT 
 Город
 FROM Bankomat");
@@ -541,19 +541,19 @@ FROM Bankomat");
                     foreach (DataRow dr in drArr)
                     {
                         //получения суумы банкоматов для рандома
-                            _bankomatSum1++;
+                            BankomatSum1++;
                     }
             }
         private void infotable_sum()
             {
-                _infotableSum1 = 1;
+                InfotableSum1 = 1;
                 string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 // MessageBox.Show(sParamConnection+""); 
                 SqlConnection connection = new SqlConnection(sParamConnection);
                 connection.Open();
                 var myTbl = new DataTable();
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 SELECT 
 Город
 FROM infotable");
@@ -563,19 +563,19 @@ FROM infotable");
                 foreach (DataRow dr in drArr)
                 {
                  //получение суммы инфокиосков
-                        _infotableSum1++;
+                        InfotableSum1++;
                 }
             }
         private void RKC_sum()
         {
-            _rkcSum1 = 1;         
+            RkcSum1 = 1;         
             string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             // MessageBox.Show(sParamConnection+""); 
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Город
 FROM RKC");
@@ -585,19 +585,19 @@ FROM RKC");
             foreach (DataRow dr in drArr)
             {
                 //сумма ркц
-                    _rkcSum1++;
+                    RkcSum1++;
             }
         }
         private void bank_sum()
         {
-            _bankSum1 = 1;
+            BankSum1 = 1;
            
             string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Город
 FROM RKC");
@@ -607,7 +607,7 @@ FROM RKC");
             foreach (DataRow dr in drArr)
             {
                 //сумма банков
-                    _bankSum1++;
+                    BankSum1++;
             }
             connection.Close();
         }
@@ -619,7 +619,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 SqlConnection connection = new SqlConnection(sParamConnection);
                 connection.Open();
                 var myTbl = new DataTable();
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 SELECT 
 Ширина, Долгота, Адрес, Город, Описание
 FROM Banki");
@@ -629,7 +629,7 @@ FROM Banki");
 
                 foreach (DataRow dr in drArr)
                 {
-                    _bankSum1++;
+                    BankSum1++;
                 }
                 connection.Close();
                 bank_test();
@@ -647,7 +647,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Ширина, Долгота, Адрес, Город, Описание, ID
 FROM Banki");
@@ -696,7 +696,7 @@ FROM Banki");
             //Добавляем в компонент, список маркеров.
             gMapControl1.Overlays.Add(test);
         }
-        string id_bankomat, adresss, citii;
+        string _idBankomat, _adresss, _citii;
             private void test_bankomat(object sender, EventArgs e)
             {
                 gMapControl1.Overlays.Clear();
@@ -711,7 +711,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 SqlConnection connection = new SqlConnection(sParamConnection);
                 connection.Open();
                 var myTbl = new DataTable();
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 
 SELECT 
 Ширина, Долгота, Город, Банкомат_ID, Адрес
@@ -729,23 +729,18 @@ FROM Bankomat");
                         double shirina = Convert.ToDouble(dr.ItemArray[0]);
                         double dolgota = Convert.ToDouble(dr.ItemArray[1]);
                         string adres = Convert.ToString(dr.ItemArray[4]);
-                        adresss = adres;
-                        citii = citi;
-                        id_bankomat = Convert.ToString(id);
-                        textBox2.Text = citii + " " + adresss;
+                        _adresss = adres;
+                        _citii = citi;
+                        _idBankomat = Convert.ToString(id);
+                        textBox2.Text = _citii + " " + _adresss;
                         //  MessageBox.Show(" "+ i); 
                         test_metka_creat2(shirina, dolgota, adres);
                         button1_Click(sender, e);
                         break;
                     }
-                    //else
-                    //{
-                    //    test_bankomat(sender,e);
-                    //}
-                    
                 }
             }
-            string model, nomer;
+            string _model, _nomer;
         private void oformlenie_auto()
             {
                 string sParamConnection = @" 
@@ -753,7 +748,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 SqlConnection connection = new SqlConnection(sParamConnection);
                 connection.Open();
                 var myTbl = new DataTable();
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 SELECT 
 Модель, [Гос. номер], Свободен, ID
 FROM Autopark");
@@ -764,11 +759,11 @@ FROM Autopark");
                 {
                     string mod = Convert.ToString(dr.ItemArray[0]);
                     string nom = Convert.ToString(dr.ItemArray[1]);
-                    model = mod;
-                    nomer = nom;
+                    _model = mod;
+                    _nomer = nom;
                     bool svo = Convert.ToBoolean(dr.ItemArray[2]);
                     string id = Convert.ToString(dr.ItemArray[3]);
-                    if (svo==true)
+                    if (svo)
                     {
                         var myTbl2 = new DataTable();
                         string sQuery2 = string.Format(@" 
@@ -791,7 +786,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Фамилия, Имя, Отчество, Инкасатор, Водитель, Инженер, На_выезде, ID
 FROM Sotrudnik");
@@ -803,9 +798,7 @@ FROM Sotrudnik");
                 string fam = Convert.ToString(dr.ItemArray[0]);
                 string nam = Convert.ToString(dr.ItemArray[1]);
                 string otche = Convert.ToString(dr.ItemArray[2]);
-                bool inkas = Convert.ToBoolean(dr.ItemArray[3]);
                 bool vod = Convert.ToBoolean(dr.ItemArray[4]);
-                bool inje = Convert.ToBoolean(dr.ItemArray[5]);
                 bool viesd = Convert.ToBoolean(dr.ItemArray[6]);
                 string id = Convert.ToString(dr.ItemArray[7]);
                 if (familia2 != "" && vod == true && viesd == false)
@@ -813,7 +806,6 @@ FROM Sotrudnik");
                     familia2 = fam;
                     name2 = nam;
                     otchestvo2 = otche;
-                    // MessageBox.Show("Второй инкасатор  " + familia + "" + name + "" + otchestvo);
                     var myTbl2 = new DataTable();
                     string sQuery2 = string.Format(@" 
                 UPDATE Sotrudnik
@@ -821,7 +813,6 @@ FROM Sotrudnik");
                 WHERE ID =" + "'" + id + "'");
                     SqlDataAdapter adapter2 = new SqlDataAdapter(sQuery2, connection);
                     adapter2.Fill(myTbl2);
-                    // MessageBox.Show(model + "   " + nomer + "   ");
                     connection.Close();
                     break;
                 }
@@ -835,7 +826,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Фамилия, Имя, Отчество, Инкасатор, Водитель, Инженер, На_выезде, ID
 FROM Sotrudnik");
@@ -847,12 +838,10 @@ FROM Sotrudnik");
                 string fam = Convert.ToString(dr.ItemArray[0]);
                 string nam = Convert.ToString(dr.ItemArray[1]);
                 string otche = Convert.ToString(dr.ItemArray[2]);
-                bool inkas = Convert.ToBoolean(dr.ItemArray[3]);
-                bool vod = Convert.ToBoolean(dr.ItemArray[4]);
                 bool inje = Convert.ToBoolean(dr.ItemArray[5]);
                 bool viesd = Convert.ToBoolean(dr.ItemArray[6]);
                 string id = Convert.ToString(dr.ItemArray[7]);
-                if (familia2 != "" && inje == true && viesd == false)
+                if (familia2 != "" && inje && viesd == false)
                 {
                     familiaJ = fam;
                     nameJ = nam;
@@ -876,7 +865,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Фамилия, Имя, Отчество, Инкасатор, Водитель, Инженер, На_выезде, ID
 FROM Sotrudnik");
@@ -889,11 +878,9 @@ FROM Sotrudnik");
                 string nam = Convert.ToString(dr.ItemArray[1]);
                 string otche = Convert.ToString(dr.ItemArray[2]);
                 bool inkas = Convert.ToBoolean(dr.ItemArray[3]);
-                bool vod = Convert.ToBoolean(dr.ItemArray[4]);
-                bool inje = Convert.ToBoolean(dr.ItemArray[5]);
                 bool viesd = Convert.ToBoolean(dr.ItemArray[6]);
                 string id = Convert.ToString(dr.ItemArray[7]);
-                if (familia1 != "" && inkas == true && viesd == false)
+                if (familia1 != "" && inkas && viesd == false)
                 {
                     familia1 = fam;
                     name1 = nam;
@@ -917,7 +904,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
             SqlConnection connection = new SqlConnection(sParamConnection);
             connection.Open();
             var myTbl = new DataTable();
-            string sQuery = string.Format(@" 
+            string sQuery = (@" 
 SELECT 
 Фамилия, Имя, Отчество, Инкасатор, Водитель, Инженер, На_выезде, ID
 FROM Sotrudnik");
@@ -930,11 +917,9 @@ FROM Sotrudnik");
                 string nam = Convert.ToString(dr.ItemArray[1]);
                 string otche = Convert.ToString(dr.ItemArray[2]);
                 bool inkas = Convert.ToBoolean(dr.ItemArray[3]);
-                bool vod = Convert.ToBoolean(dr.ItemArray[4]);
-                bool inje = Convert.ToBoolean(dr.ItemArray[5]);
                 bool viesd = Convert.ToBoolean(dr.ItemArray[6]);
                 string id = Convert.ToString(dr.ItemArray[7]);
-                if (familia !=""&& inkas == true && viesd == false) 
+                if (familia !=""&& inkas && viesd == false) 
                 {
                     familia = fam;
                     name = nam;
@@ -951,20 +936,20 @@ WHERE ID =" + "'" + id + "'");
                 }
             }
         }
-        int random;
+        int _random;
         private void random_oshibka()
         {
             Random rnd = new Random();
-             random = rnd.Next(1, 3); ;
+             _random = rnd.Next(1, 3); ;
         }
         private void button2_Click(object sender, EventArgs e)
         {
             random_oshibka();
-            if (random == 1)
+            if (_random == 1)
             {
-                MessageBox.Show("Код операции: " + random + " заканчиваются деньги, требуются касеты для замены", "Обработка банкомата", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(@"Код операции: " + _random + @" заканчиваются деньги, требуются касеты для замены", @"Обработка банкомата", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                 if (comboBox2.Text == "Банкоматы")
+                 if (comboBox2.Text == @"Банкоматы")
                  {
                      test_bankomat(sender, e);
                      oformlenie_auto();
@@ -973,21 +958,21 @@ WHERE ID =" + "'" + id + "'");
                      voditel_inkasacii();
                      Oformlenie oformlenie = new Oformlenie();
                      oformlenie.Show();
-                     oformlenie.автомобильTextBox.Text = model;
-                     oformlenie.гос_номерTextBox.Text = nomer;
+                     oformlenie.автомобильTextBox.Text = _model;
+                     oformlenie.гос_номерTextBox.Text = _nomer;
                      oformlenie.водительTextBox.Text = familia2;
                      oformlenie.главный_инкасаторTextBox.Text = familia;
                      oformlenie.второй_инкасаторTextBox.Text = familia1;
-                     oformlenie.объект_обслуживанияTextBox.Text = "Банкомат № " + id_bankomat + " Адрес: " + adresss + " " + citii;
-                     oformlenie.id = id_bankomat;
-                     oformlenie.textBox1.Text = Convert.ToString(random);
+                     oformlenie.объект_обслуживанияTextBox.Text = @"Банкомат № " + _idBankomat + @" Адрес: " + _adresss + @" " + _citii;
+                     oformlenie.id = _idBankomat;
+                     oformlenie.textBox1.Text = Convert.ToString(_random);
                      oformlenie.save();
                  }
             }
-                 if(random == 2)
+                 if(_random == 2)
                 {
-                    MessageBox.Show("Код операции: " + random + " требуется инженер для работы с банкоматом", "Обработка банкомата", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (comboBox2.Text == "Банкоматы")
+                    MessageBox.Show(@"Код операции: " + _random + @" требуется инженер для работы с банкоматом", @"Обработка банкомата", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (comboBox2.Text == @"Банкоматы")
                     {
                         test_bankomat(sender, e);
                         oformlenie_auto();
@@ -996,14 +981,14 @@ WHERE ID =" + "'" + id + "'");
                          injener();
                         Oformlenie oformlenie = new Oformlenie();
                         oformlenie.Show();
-                        oformlenie.автомобильTextBox.Text = model;
-                        oformlenie.гос_номерTextBox.Text = nomer;
+                        oformlenie.автомобильTextBox.Text = _model;
+                        oformlenie.гос_номерTextBox.Text = _nomer;
                         oformlenie.водительTextBox.Text = familia2;
                         oformlenie.главный_инкасаторTextBox.Text = familia;
                         oformlenie.инженерTextBox.Text = familiaJ;
-                        oformlenie.объект_обслуживанияTextBox.Text = "Банкомат № " + id_bankomat + " Адрес: " + adresss + " " + citii;
-                        oformlenie.id = id_bankomat;
-                        oformlenie.textBox1.Text = Convert.ToString(random);
+                        oformlenie.объект_обслуживанияTextBox.Text = @"Банкомат № " + _idBankomat + @" Адрес: " + _adresss + @" " + _citii;
+                        oformlenie.id = _idBankomat;
+                        oformlenie.textBox1.Text = Convert.ToString(_random);
                         oformlenie.save();
                     }
                 }
@@ -1017,7 +1002,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                 SqlConnection connection = new SqlConnection(sParamConnection);
                 connection.Open();
                 var myTbl = new DataTable();
-                string sQuery = string.Format(@" 
+                string sQuery = (@" 
 SELECT 
 Ширина, Долгота, Адрес, Город, Описание
 FROM Banki");
@@ -1042,9 +1027,9 @@ FROM Banki");
             {
                 GMapOverlay markersrkc =
                        new GMapOverlay(gMapControl1, "marker");
-                Image bank_met = Properties.Resources.marker2_11;
+                Image bankMet = Properties.Resources.marker2_11;
                 GMapMarkerImage rkc =
-                 new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), bank_met);
+                 new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), bankMet);
                 rkc.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(rkc);
                 //Указываем, что подсказку маркера, необходимо отображать всегда.
                 rkc.ToolTipMode = MarkerTooltipMode.OnMouseOver;
@@ -1068,7 +1053,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                     SqlConnection connection = new SqlConnection(sParamConnection);
                     connection.Open();
                     var myTbl = new DataTable();
-                    string sQuery = string.Format(@" 
+                    string sQuery = (@" 
 SELECT 
 Ширина, Долгота, Адрес, Город, Описание
 FROM RKC");
@@ -1093,9 +1078,9 @@ FROM RKC");
             {
                     GMapOverlay markersrkc =
                     new GMapOverlay(gMapControl1, "marker");
-                    Image rkc_met = Properties.Resources.marker1;
+                    Image rkcMet = Properties.Resources.marker1;
                     GMapMarkerImage rkc =
-                     new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), rkc_met);
+                     new GMapMarkerImage(new GMap.NET.PointLatLng(shir, dolg), rkcMet);
                     rkc.ToolTip = new GMap.NET.WindowsForms.ToolTips.GMapRoundedToolTip(rkc);
                     //Указываем, что подсказку маркера, необходимо отображать всегда.
                     rkc.ToolTipMode = MarkerTooltipMode.OnMouseOver;
@@ -1113,7 +1098,7 @@ FROM RKC");
             {
                 gMapControl1.Overlays.Clear();
                 i = 1;
-                if (comboBox2.Text == "Инфокиоски")
+                if (comboBox2.Text == @"Инфокиоски")
                 {
                     string sParamConnection = @" 
 Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
@@ -1121,7 +1106,7 @@ Data Source=STAS-PK;Initial Catalog=inkasacia;Integrated Security=SSPI";
                     SqlConnection connection = new SqlConnection(sParamConnection);
                     connection.Open();
                     var myTbl = new DataTable();
-                    string sQuery = string.Format(@" 
+                    string sQuery = (@" 
 SELECT 
 Ширина, Долгота, Адрес, Город
 FROM infotable");
@@ -1168,19 +1153,19 @@ FROM infotable");
         }
             private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
             {
-                if (comboBox2.Text == "Банкоматы")
+                if (comboBox2.Text == @"Банкоматы")
                 {
                     bankomati_creat();
                 }
-                else if (comboBox2.Text == "РКЦ")
+                else if (comboBox2.Text == @"РКЦ")
                 {
                     RKC_creat();
                 }
-                else if (comboBox2.Text == "Отделения банка")
+                else if (comboBox2.Text == @"Отделения банка")
                 {
                     bank_creat();
                 }
-                else if (comboBox2.Text == "Инфокиоски")
+                else if (comboBox2.Text == @"Инфокиоски")
                 {
                     infotable_create();
                 }
@@ -1206,9 +1191,6 @@ FROM infotable");
                 get
                 {
                     throw new NotImplementedException();
-                }
-                set
-                {
                 }
             }
             private void возвращениеНарядаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1263,7 +1245,7 @@ FROM infotable");
                 if (status != IPStatus.Success)
                 {
                     DialogResult result;
-                    result = MessageBox.Show(@"Проверьте доступ к интернету!", "Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    result = MessageBox.Show(@"Проверьте доступ к интернету!", @"Ошибка подключения!", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
 
                     if (result == DialogResult.Retry)
                     {
@@ -1286,9 +1268,6 @@ FROM infotable");
                 {
                     throw new NotImplementedException();
                 }
-                set
-                {
-                }
             }
 
             public Oformlenie Оформление
@@ -1296,9 +1275,6 @@ FROM infotable");
                 get
                 {
                     throw new NotImplementedException();
-                }
-                set
-                {
                 }
             }
 
@@ -1308,9 +1284,6 @@ FROM infotable");
                 {
                     throw new NotImplementedException();
                 }
-                set
-                {
-                }
             }
 
             public otchet_narad Отчёт
@@ -1318,9 +1291,6 @@ FROM infotable");
                 get
                 {
                     throw new NotImplementedException();
-                }
-                set
-                {
                 }
             }
 
@@ -1330,9 +1300,6 @@ FROM infotable");
                 {
                     throw new NotImplementedException();
                 }
-                set
-                {
-                }
             }
 
             public Finery Подразделение
@@ -1341,9 +1308,6 @@ FROM infotable");
                 {
                     throw new NotImplementedException();
                 }
-                set
-                {
-                }
             }
 
             internal AboutBox1 Опрограмме
@@ -1351,9 +1315,6 @@ FROM infotable");
                 get
                 {
                     throw new NotImplementedException();
-                }
-                set
-                {
                 }
             }
         }

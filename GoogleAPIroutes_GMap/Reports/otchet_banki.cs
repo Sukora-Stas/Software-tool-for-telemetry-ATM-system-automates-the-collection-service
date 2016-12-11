@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Reports
 {
-    public partial class otchet_banki : Form
+    public partial class OtchetBanki : Form
     {
-        public otchet_banki()
+        public OtchetBanki()
         {
             InitializeComponent();
         }
@@ -31,27 +24,16 @@ namespace GoogleAPIroutes_GMap
 
         private void назадToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           Hide();
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void bankiBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bankiBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-
-        }
-
         private void otchet_banki_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Banki". При необходимости она может быть перемещена или удалена.
-            this.bankiTableAdapter.Fill(this.inkasaciaDataSet.Banki);
-
+            bankiTableAdapter.Fill(inkasaciaDataSet.Banki);
         }
     }
 }

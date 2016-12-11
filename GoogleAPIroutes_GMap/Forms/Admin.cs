@@ -852,7 +852,7 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётБанковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_banki banki = new otchet_banki();
+            OtchetBanki banki = new OtchetBanki();
             banki.Show();
         }
 

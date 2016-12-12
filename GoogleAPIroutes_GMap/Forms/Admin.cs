@@ -864,7 +864,7 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётСотрудниковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_sotrudniki sotrudniki = new otchet_sotrudniki();
+            OtchetSotrudniki sotrudniki = new OtchetSotrudniki();
             sotrudniki.Show();
         }
 

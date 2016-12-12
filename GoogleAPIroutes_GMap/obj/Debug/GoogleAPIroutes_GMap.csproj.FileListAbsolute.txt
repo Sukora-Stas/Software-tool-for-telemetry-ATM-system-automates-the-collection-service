@@ -89,10 +89,6 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\GMap.NET.Core.xml
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\GMap.NET.WindowsForms.xml
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.csprojResolveAssemblyReference.cache
-C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_ispolz.resources
-C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_narad.resources
-C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_RKC.resources
-C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.otchet_sotrudniki.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Properties.Resources.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.csproj.GenerateResource.Cache
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\bin\Debug\Software tool for telemetry ATM system.exe.config
@@ -114,3 +110,7 @@ C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Reports.OtchetBankomati.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Forms.Search.resources
 C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Reports.OtchetInfokiosk.resources
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Reports.OtchetIspolz.resources
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Reports.otchet_narad.resources
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Reports.OtchetRkc.resources
+C:\Users\stasi\Source\Repos\Software-tool-for-telemetry-ATM-system-automates-the-collection-service\GoogleAPIroutes_GMap\obj\Debug\GoogleAPIroutes_GMap.Reports.OtchetSotrudniki.resources

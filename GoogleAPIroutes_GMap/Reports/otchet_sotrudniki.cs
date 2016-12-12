@@ -1,35 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Reports
 {
-    public partial class otchet_sotrudniki : Form
+    public partial class OtchetSotrudniki : Form
     {
-        public otchet_sotrudniki()
+        public OtchetSotrudniki()
         {
             InitializeComponent();
         }
-
-        private void sotrudnikBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.sotrudnikBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-
-        }
-
         private void otchet_sotrudniki_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.Sotrudnik". При необходимости она может быть перемещена или удалена.
-            this.sotrudnikTableAdapter.Fill(this.inkasaciaDataSet.Sotrudnik);
+            sotrudnikTableAdapter.Fill(inkasaciaDataSet.Sotrudnik);
 
         }
 
@@ -46,7 +29,7 @@ namespace GoogleAPIroutes_GMap
 
         private void назадToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)

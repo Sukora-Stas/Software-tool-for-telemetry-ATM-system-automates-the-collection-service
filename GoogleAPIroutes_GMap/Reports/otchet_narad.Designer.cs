@@ -1,4 +1,4 @@
-﻿namespace GoogleAPIroutes_GMap
+﻿namespace GoogleAPIroutes_GMap.Reports
 {
     partial class otchet_narad
     {

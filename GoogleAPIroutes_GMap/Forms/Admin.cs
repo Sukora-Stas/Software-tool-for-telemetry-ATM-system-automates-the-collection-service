@@ -846,7 +846,7 @@ AboutBox1 about = new AboutBox1();
 
         private void отчётРКЦToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            otchet_RKC rkc = new otchet_RKC();
+            OtchetRkc rkc = new OtchetRkc();
             rkc.Show();
         }
 

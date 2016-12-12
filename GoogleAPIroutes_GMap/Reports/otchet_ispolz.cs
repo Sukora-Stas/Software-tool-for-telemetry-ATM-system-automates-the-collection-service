@@ -1,37 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoogleAPIroutes_GMap.Forms;
 
-namespace GoogleAPIroutes_GMap
+namespace GoogleAPIroutes_GMap.Reports
 {
-    public partial class otchet_ispolz : Form
+    public partial class OtchetIspolz : Form
     {
-        public otchet_ispolz()
+        public OtchetIspolz()
         {
             InitializeComponent();
         }
-        private void lOGBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.lOGBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.inkasaciaDataSet);
-        }
         private void otchet_ispolz_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "inkasaciaDataSet.LOG". При необходимости она может быть перемещена или удалена.
-            this.lOGTableAdapter.Fill(this.inkasaciaDataSet.LOG);
+           lOGTableAdapter.Fill(inkasaciaDataSet.LOG);
         }
         private void назадToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //закрыть
-            this.Hide();
+            Hide();
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {

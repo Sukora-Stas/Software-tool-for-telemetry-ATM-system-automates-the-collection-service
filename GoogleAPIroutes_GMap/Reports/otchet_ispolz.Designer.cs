@@ -1,6 +1,6 @@
-﻿namespace GoogleAPIroutes_GMap
+﻿namespace GoogleAPIroutes_GMap.Reports
 {
-    partial class otchet_ispolz
+    partial class OtchetIspolz
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(otchet_ispolz));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OtchetIspolz));
             this.inkasaciaDataSet = new GoogleAPIroutes_GMap.InkasaciaDataSet();
             this.lOGBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lOGTableAdapter = new GoogleAPIroutes_GMap.InkasaciaDataSetTableAdapters.LOGTableAdapter();
@@ -187,7 +187,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "otchet_ispolz";
+            this.Name = "OtchetIspolz";
             this.helpProvider1.SetShowHelp(this, true);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Отчёт использования";

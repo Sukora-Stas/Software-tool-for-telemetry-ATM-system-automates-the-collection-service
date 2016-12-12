@@ -9,6 +9,8 @@ using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using GMap.NET.WindowsForms;
+using GoogleAPIroutes_GMap.Reports;
+
 //директива для работы с картами
 
 namespace GoogleAPIroutes_GMap.Forms
@@ -1220,7 +1222,7 @@ FROM infotable");
             }
             private void отчётИспользованияToolStripMenuItem_Click(object sender, EventArgs e)
             {
-                otchet_ispolz ispolz = new otchet_ispolz();
+                OtchetIspolz ispolz = new OtchetIspolz();
                 ispolz.Show();
             }
             private void отчётНарядаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1290,7 +1292,7 @@ FROM infotable");
                 }
             }
 
-            public otchet_ispolz Отчёт2
+            public OtchetIspolz Отчёт2
             {
                 get
                 {
